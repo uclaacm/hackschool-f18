@@ -1,4 +1,4 @@
-# Hackschool Resources - Fall 2017
+# Hackschool Resources - Fall 2018
 
 ## Welcome to Hackschool 
 
