@@ -5,19 +5,14 @@
 It's easy to feel lost in the world of tech or not know where to start. We
 created Hackschool to give you a place to start in this wonderful universe of
 possibilities. We wanted to fill the gaps between what is taught in class and
-what is needed to build change you'd like to see in the world. Over the next 8
-weeks, we'll alternate between Learn and Hack sessions, where we'll introduce a
-new topic with mentors on-hand to help, and then spend the following week
-building out a mini-project to apply it. By the end, you'll have glimpsed a
+what is needed to build change you'd like to see in the world. By the end, you'll have glimpsed a
 little bit of everything behind the websites you visit every day.
 
-In this repository, you'll find a guidemap to all the topics we introduce this
+In this repository, you'll find a guide to all the topics we introduce this
 quarter, and links to helpful resources.
 
 We hope you have a blast this quarter, and encourage you to reach out to any of
-us if you have any questions or comments. Private concerns can be addressed to
-the current Hackschool Director, Shannon Phu, at
-[skphu@ucla.edu](mailto:skphu@ucla.edu).
+us if you have any questions or comments. 
 
 <!-- MarkdownTOC autolink=true bracket="round" lowercase_only_ascii="false" -->
 - [Course Curriculum](#basic-curriculum)
@@ -30,36 +25,31 @@ the current Hackschool Director, Shannon Phu, at
 
 ## Basic Curriculum
 
-// TODO
-
 * Week 2: Introduction to Front-End Development
-    * [Slides]\(TODO)
-    * [Code]\(TODO)
+    * [Slides](tinyurl.com/hackschool2018-1)
+    * [Code](https://github.com/GalenWong/session-1-intro-to-web)
 * Week 3: Introduction to Back-End Development
     * Coming soon!
 * Week 4:
-    * Front-End Track
-    * Back-End Track
+    - Front-End Track: JavaScript and the DOM
+    - Back-End Track
 * Week 5:
-    - Front-End Track
+    - Front-End Track: CSS Layout
     - Back-End Track
 * Week 6:
-   - Front-End Track
+   - Front-End Track: Introduction to React
    - Back-End Track
 * Week 7:
-   - Front-End Track
+   - Front-End Track: Dynamic Content
    - Back-End Track
 * Week 8:
    - **No Hackschool - Thanksgiving**
 * Week 9:
-   - Front-End Track
-   - Back-End Track
+   - Project work
+* Week 10:
+   - Demo
 
 ## Essential Links 
-
-* [Hackschool Fall 2018 on GitHub](https://github.com/uclaacm/hackschool-f18)
-
-* [Final Project Spec]\(TODO)
 
 * [ACM website](http://www.uclaacm.com/)
 
@@ -129,6 +119,3 @@ For JavaScript:
 * [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS) to learn the language more deeply
 
 * [freeCodeCamp](https://www.freecodecamp.org/map) for a massive, highly comprehensive curriculum covering everything you would need to know to start a new career as a software engineer
-
-### Points of Contact for Technical Questions
-[Mentor Contact Info Spreadsheet](https://docs.google.com/spreadsheets/d/1rWsnS8zYMXVQKqnVOAUyYM2391IOBNL-RTgOnIQJ6Pw/edit?usp=sharing)
