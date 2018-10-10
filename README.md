@@ -36,7 +36,7 @@ the current Hackschool Director, Shannon Phu, at
     * [Slides]\(TODO)
     * [Code]\(TODO)
 * Week 3: Introduction to Back-End Development
-    * [Spec](http://tinyurl.com/hackschool17-spec-1)
+    * Coming soon!
 * Week 4:
     * Front-End Track
     * Back-End Track
