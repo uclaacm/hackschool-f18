@@ -270,13 +270,10 @@ In your `index.html` file,
 
 In your `script.js` file,
 ```javascript
-window.onload = () => {
-  document.getElementById('last').onclick = () => {
-    document.getElementById('last').innerHTML = 'Secret message';
-  };
+document.getElementById('last').onclick = () => {
+	document.getElementById('last').innerHTML = 'Secret message';
 };
 ```
-- `window` is a global variable that represents the browser window.
 - The `() => {}` syntax is a fancy way to declare function. Don't worry. We will be covering those later.
 - `document` is another global variable that represents the DOM.
 - The first line is saying "after the `window` has loaded (`onload`), execute the following function".
