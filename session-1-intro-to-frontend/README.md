@@ -255,7 +255,7 @@ button {
 ### **Manipulate**: Create a JavaScript file and link it to your HTML
 - Create a file named `script.js`. Under the same directory as your HTML file.
 ```HTML
-<!-- Inside the head tag -->
+<!-- Inside the body tag -->
 <script src="script.js"></script>
 ```
 - You can also put all the JavaScript code within the `script` tag. 
