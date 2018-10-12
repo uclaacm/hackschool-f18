@@ -287,23 +287,10 @@ $ node -v
 
 You can also run `node` command. 
 Since you have already installed node, your CLI should have a new command called `node` (just as `ls`, `cd`, which are all commands that can be called from the terminal)
-<code id="galen-bash">
 ```bash
 $ node 
 > 
 ```
-</code>
-<script>
-function remove() {
-    document.getElementbyId("galen-bash").innerHTML = "```\nbash\n$ node\n > \n``` \n";
-    setTimeout(add, 500);
-}
-function add() {
-    document.getElementbyId("galen-bash").innerHTML = " ```\nbash \n$ node \n> ▌ \n```\n ";
-    setTimeout(remove, 500);
-}
-add();
-</script>
 
 Write JavaScript as you would do in a browser.
 ```JavaScript
