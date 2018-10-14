@@ -329,3 +329,132 @@ $ node sum.js
 Output "3" as expected.
 
 
+### Your own server! 
+
+What is the code that can start a server? How do we do that knowing literally nothng?
+
+Don't worry about. __Other people has already written the code__ necessary to start a server for you! 
+__Packages__ and __modules__ are the code bundled together to do one thing really well. 
+Someone has already written a package called __`Express`__ so we can use it to start our own server in a few lines.
+
+How to we use their package then?
+
+### NPM (Node package Mangager)
+`NPM` is the program that allows you to download the packages people published online. 
+You do not have to install it since it is by default installed along with `node`.
+
+First `cd` to the directory with the `sum.js`. You should already be there if you did nothing else to your terminal.
+This will be where are we put our server code.
+
+Run the following command.
+```bash
+npm init 
+```
+It is gonna ask you about name of package, version, description and other info.
+We can just let the program set the default by pressing enter.
+```
+package name: (hackschool2)
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author:
+license: (ISC)
+```
+
+The `npm init` command creates a `package.json`. This file is going to keep track of all the packages we have installed. 
+Let's download the `express` package.
+
+After all the setup, we can download the `express` package.
+```
+npm install express --save
+```
+
+Now, we see that `package.json` has changed. 
+```
+"dependencies": {
+    "express": "^4.16.4"
+}
+```
+
+This indicates that you have downloaded the `express` package.
+
+Notice also, we have an extra folder called `node_modules`. This is where the downloaded code sits.
+
+Another file that is created is `package-lock.json`. If your downloaded package also uses some other packages, `package-lock.json` will keep track of the other packages as well.
+
+### Server Code
+Now, we start a file named `index.js`. Remember, we want to use the `express` package. So, the first thing we tell JavaScript is that we want to use `express`.
+```JS
+var express = require('express');
+```
+* `require` is a function that takes in a package name and return it for you. 
+* what is being returned by the `require` function depends on how the author of the package wrote it. It can be number, string, or even function
+* In this case, `express` variable holds a function.
+
+```JS
+const express = require('express');
+const app = express();
+```
+Now, the `express` function returns an object with some property. We name that object `app`.
+
+#### URL
+A URL looks like this, 
+```
+www.exmaple.com/user/Galen
+```
+* `www.exmaple.com` will be translated to the IP address of the server. 
+* `/usr/Galen` specifies which page in the webpage you are trying to access.
+
+### First page
+Let's say we want to build a website `www.mypage.com`
+We want our first page to be `www.mypage.com/`. 
+
+In our `index.js` file,
+
+```JS
+app.get('/', (request, response) => {
+    response.sendFile(__dirname + '/index.html');
+});
+
+app.listen(3000)
+```
+* The `app` object has a function called `get`.
+* The first input to `get` specifies which page does the user wants to get. 
+* We passed in a function as the second input, the function is called when a user is accessing the page.
+* The `get` function passes the 2 objects, `request` and `response` to our function. 
+* The `response` object provides some function that allows us to send response. One of them is `sendFile`
+* `__dirname` is the directory name of this file. It is whatever is printed by the `pwd` command.
+* We passed the __path__ to our HTML file and it will be sent to the user whenever they are trying to access to page.
+
+Let's type in `localhost:3000/` in our browser in see what happens. 
+
+<b>We get our page!!!!!!!!</b>
+
+What happens if we try accessing "other page", like `localhost:3000/user/Galen`?
+
+We get an error, becuase there is no such page! We only defined the page `/`
+
+We can change our `get` function. 
+```JS
+app.get('/mypage', (request, response) => {
+    response.sendFile(__dirname + '/index.html');
+});
+```
+
+Now we can see our page at `localhost:3000/mypage`.
+However, `localhost:3000/` returns an error, since we did not specify what to show there.
+
+You must be wondering, what does `app.listen(3000)` do?
+
+When this line is executed, we set up the server in our computer, and start listening to the __port__ `3000`.
+
+What is a `port`? Let's say you want to host 2 webpages on your computer at the same time. 
+But your computer only has one IP address. 
+So, computer scientist invented this concept called `port`, which means there are multiple "entry point" on your computer/server. 
+
+Try changing `app.listen(3000)` to `app.listen(8080)`. 
+
+Now, we can only access our page at `localhost:8080/mypage`.
