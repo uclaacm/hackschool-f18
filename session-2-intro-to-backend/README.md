@@ -365,6 +365,9 @@ license: (ISC)
 ```
 
 The `npm init` command creates a `package.json`. This file is going to keep track of all the packages we have installed. 
+However, you can just type out the package.json without using `npm init`. But that is unpractical.
+`json` stands a JavaScript Object Notation. `package.json` file is a JavaScript object, in a file.
+
 Let's download the `express` package.
 
 After all the setup, we can download the `express` package.
@@ -384,15 +387,17 @@ This indicates that you have downloaded the `express` package.
 Notice also, we have an extra folder called `node_modules`. This is where the downloaded code sits.
 
 Another file that is created is `package-lock.json`. If your downloaded package also uses some other packages, `package-lock.json` will keep track of the other packages as well.
+However, this `package-lock.json` is not required for npm to work. It just makes things faster when you install packages.
 
 ### Server Code
 Now, we start a file named `index.js`. Remember, we want to use the `express` package. So, the first thing we tell JavaScript is that we want to use `express`.
 ```JS
-var express = require('express');
+const express = require('express');
 ```
 * `require` is a function that takes in a package name and return it for you. 
 * what is being returned by the `require` function depends on how the author of the package wrote it. It can be number, string, or even function
 * In this case, `express` variable holds a function.
+* `npm` gets the package online. `require` is going to gets the package from local.
 
 ```JS
 const express = require('express');
@@ -425,6 +430,8 @@ app.listen(3000)
 * The first input to `get` specifies which page does the user wants to get. 
 * We passed in a function as the second input, the function is called when a user is accessing the page.
 * The `get` function passes the 2 objects, `request` and `response` to our function. 
+* `request` is the thing coming from the browser.
+* `response` is what goes back to the browser.
 * The `response` object provides some function that allows us to send response. One of them is `sendFile`
 * `__dirname` is the directory name of this file. It is whatever is printed by the `pwd` command.
 * We passed the __path__ to our HTML file and it will be sent to the user whenever they are trying to access to page.
@@ -444,12 +451,22 @@ app.get('/mypage', (request, response) => {
 });
 ```
 
+
 Now we can see our page at `localhost:3000/mypage`.
 However, `localhost:3000/` returns an error, since we did not specify what to show there.
 
 You must be wondering, what does `app.listen(3000)` do?
 
 When this line is executed, we set up the server in our computer, and start listening to the __port__ `3000`.
+
+We can add another endpoints
+```JS
+app.get('/random', (request, response) => {
+    response.send('<!DOCTYPE html><html><body>' + Math.random() + '</body></html>');
+    response.end();
+});
+```
+This shows that the server process data and send it back.
 
 What is a `port`? Let's say you want to host 2 webpages on your computer at the same time. 
 But your computer only has one IP address. 
@@ -458,3 +475,5 @@ So, computer scientist invented this concept called `port`, which means there ar
 Try changing `app.listen(3000)` to `app.listen(8080)`. 
 
 Now, we can only access our page at `localhost:8080/mypage`.
+
+
