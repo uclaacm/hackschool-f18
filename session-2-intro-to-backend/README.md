@@ -8,7 +8,7 @@
 # Resources
 
 **Slides**
-* [Session 2 - Introduction to Backend Development](TODO)
+* [Session 2 - Introduction to Backend Development](tinyurl.com/hackschool2018-2)
 
 **ACM Membership Attendance Portal**
 * [Portal](http://members.uclaacm.com/login)
