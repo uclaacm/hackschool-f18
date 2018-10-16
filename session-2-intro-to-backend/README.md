@@ -13,9 +13,6 @@
 **ACM Membership Attendance Portal**
 * [Portal](http://members.uclaacm.com/login)
 
-**Questions**
-* [Ask your question here!](http://goo.gl/forms/xyeFXLx9mrAXolCG3)
-
 **Install Node.js**
 * [Install Node.js](https://nodejs.org/en/download/)
 
@@ -312,7 +309,7 @@ const sum = (x, y) => {
 console.log(sum(1 ,2));
 ```
 
-Now, we navigat to the directory/folder containing `sum.js`. Use `ls` to check if it is there.
+Now, we navigate to the directory/folder containing `sum.js`. Use `ls` to check if it is there.
 
 ```bash
 $ cd Desktop/hackschool-2
