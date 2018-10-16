@@ -138,8 +138,8 @@ function functionName (input1, input2) {
 
 Let's write a plus function.
 ```JS
-const plus = (addend1, addend2) => {
-    return addend1 + addend2;
+const plus = (a, b) => {
+    return a + b;
 }
 ```
 To call/use the function,
@@ -184,7 +184,7 @@ const printNoot = () => {
 
 We can call other functinos within some function
 ```JS
-const quickMath = () => {
+const quickMaths = () => {
     return plus(2, 2) - 1;
 }
 ```
@@ -241,7 +241,7 @@ You type something, then computer responses to whatever you typed.
 ### Terminal
 Terminal is the application that has a command line interface for you to interact with your computer. 
 
-On Mac, goes to plotlight search and type `terminal` and hit `Enter`.
+On Mac, goes to spotlight search (Command+Space) and type `terminal` and hit `Enter`.
 
 On Window, hit and Windows key and type `powershell` and hit `Enter`. 
 
@@ -253,7 +253,7 @@ $ pwd
 # output: /user/galenw/
 ```
 
-If you are in a folder, very naturally you should be able to see what is in your current folder/directory. Use `ls` command, which stands for "list".
+If you are in a folder, you should be able to see what is in your current folder/directory. Use `ls` command, which stands for "list".
 ```bash
 $ ls 
 # output: Desktop Document file.txt
@@ -405,10 +405,10 @@ Now, the `express` function returns an object with some property. We name that o
 #### URL
 A URL looks like this, 
 ```
-www.exmaple.com/user/Galen
+www.example.com/user/Galen
 ```
-* `www.exmaple.com` will be translated to the IP address of the server. 
-* `/usr/Galen` specifies which page in the webpage you are trying to access.
+* `www.example.com` will be translated to the IP address of the server. 
+* `/user/Galen` specifies which page in the webpage you are trying to access.
 
 ### First page
 Let's say we want to build a website `www.mypage.com`
