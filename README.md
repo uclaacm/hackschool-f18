@@ -27,9 +27,10 @@ us if you have any questions or comments.
 
 * Week 2: Introduction to Front-End Development
     * [Slides](tinyurl.com/hackschool2018-1)
-    * [Code](https://github.com/GalenWong/session-1-intro-to-web)
+    * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-1-intro-to-frontend)
 * Week 3: Introduction to Back-End Development
-    * Coming soon!
+    * [Slides](https://docs.google.com/presentation/d/1f2YdVe9gbkP83kAOFP5meZzc8fRnLBHKbu-rrXq9eSc/edit#slide=id.g4210d45da8_0_259)
+    * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-2-intro-to-backend)
 * Week 4:
     - Front-End Track: JavaScript and the DOM
     - Back-End Track
