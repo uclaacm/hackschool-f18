@@ -32,7 +32,7 @@ Open Console in your Chrome Browser Developer's Tool:
 * Click `Inspect`
 * Click `Console`
 
-Write a line of code, which are just instructions to the computer. JavaScript is executed line by line, once you hit enter. Chrome will execute your code. 
+Write a line of code, which are just instructions to the computer. JavaScript is executed line by line, once you hit enter. Chrome will execute your code.
 
 ### 1. Values
 
@@ -61,11 +61,11 @@ Here's where "variables" come in. They are basically names for values that we ca
 
 We can think of a variable as a box with a name tag that contains some value.
 
-Let's create/__declare__ a variable called age. 
+Let's create/__declare__ a variable called age.
 ```JS
 let age;
 // Note: the semicolon (;) is not a must in JavaScript.
-// It is just nice to have for consistency. 
+// It is just nice to have for consistency.
 ```
 
 We can assign a value to it with an equal sign (`=`). Then print it out in the console with `console.log(age)`.
@@ -74,7 +74,7 @@ age = 9;
 console.log(age);
 ```
 
-We can then overwrite/change its value by assigning another value to it. 
+We can then overwrite/change its value by assigning another value to it.
 ```JS
 age = 10;
 console.log(age);
@@ -92,7 +92,7 @@ console.log(x + 2)
 // 7
 ```
 
-If you never reassign your vairable, you can use `const` to declare the variable to make it a constant. 
+If you never reassign your vairable, you can use `const` to declare the variable to make it a constant.
 
 ```JS
 const thisMustBeOne = 1;
@@ -112,7 +112,7 @@ pi = pi * 2;
 
 > Side note: the "lowerCaseUpperCase" naming convention is used by a lot of programmers. (Technically called "Camel Case.") Some people also like using the snake\_case naming method instead, though it's more rarely seen with JavaScript.
 
-Variable can also be strings, which are a bunch of characters in quotes. 
+Variable can also be strings, which are a bunch of characters in quotes.
 
 ```JS
 let name = 'Kristie';
@@ -145,38 +145,39 @@ const str = '1';
 console.log(str + str);
 ```
 
-Answer: 
+Answer:
 * Case 1: **`2`**. We are adding a number to another number, so 2 is the result.
 * Case 2: **`11`**. Note, the `'1'` here is surrounded by quotes, which makes it a string. When one adds a string to another string, they are concatenated.
 
 ### 3. Functions
-Beside numbers and strings, you can also assign functions to variables. 
+Beside numbers and strings, JavaScript also has another type of values called **functions.** Just like any other value, you can assign functions to variables.
 
-A function is something that performs some action and optionally returns a value. 
+A function is something that performs some action and optionally returns a value.
 
 Syntax of function in JavaScript looks like this.
 ```JS
 // Syntax 1
 const functionName = (input1, input2) => {
-    //actions and statements...
-}
+    // actions and statements...
+};
+
 // Syntax 2
-function functionName (input1, input2) {
-    //actions and statements...
+function functionName(input1, input2) {
+    // actions and statements...
 }
 ```
 
-Let's write a plus function.
+Let's write a function called "plus" that adds or concatenates two values together.
 ```JS
 const plus = (a, b) => {
     return a + b;
-}
+};
 ```
 To call/use the function,
 ```JS
 plus(5, 2);
 ```
-This does not do anything since you are not "capturing" the valued returned from a function. 
+This does not do anything since you are not "capturing" the valued returned from a function.
 
 We can "save" the returned value with a variable.
 ```JS
@@ -185,14 +186,14 @@ console.log(s);
 // 7
 ```
 
-Inputs are called "parameters" or "arguments". 
+Inputs are called "parameters" or "arguments".
 
 
 We can also have function without input parameters
 ```JS
 const saySomething = () => {
     return "I'm giving up on you";
-}
+};
 ```
 
 We can also have function that returns nothing.
@@ -200,7 +201,7 @@ We can also have function that returns nothing.
 const printHello = () => {
     console.log("Heeeeeeeeeeello");
     // no return statement
-}
+};
 ```
 
 We can have as much statements in function as we plaese.
@@ -209,18 +210,18 @@ const printNoot = () => {
     console.log("noot");
     console.log("noot noot");
     console.log("noot noot noot");
-}
+};
 ```
 
 We can call other functinos within some function
 ```JS
 const quickMaths = () => {
     return plus(2, 2) - 1;
-}
+};
 ```
 
 ### 4. Obejcts
-Objects are collection of data. 
+Objects are collection of data.
 Let's make an object called `person` and he goes to school in UCLA.
 
 Here is the syntax.
@@ -233,13 +234,13 @@ let person = {
 ```
 You see object can hold different types of data.
 
-We can add more data to it. 
+We can add more data to it.
 ```JS
-person.birthday = "9 Nov 1800";
-person['name'] = "M&M"; // alternative syntax, notice the quote
+person.birthday = '9 Nov 1800';
+person['name'] = 'M&M'; // alternative syntax, notice the quote
 ```
 
-We can change existing data. 
+We can change existing data.
 ```JS
 person.age = 218;
 ```
@@ -248,10 +249,10 @@ We can put function in to objects as data as well.
 ```JS
 person.rap = () => {
     console.log("I'm beginning to feel like a web god, web god.");
-}
+};
 ```
 
-We can tell M&M to rap for us by calling the rap function like this. 
+We can tell M&M to rap for us by calling the rap function like this.
 ```JS
 person.rap()
 // I'm beginning to feel like a web god, web god.
@@ -260,22 +261,18 @@ person.rap()
 ## CLI (Command Line Interface)
 
 ### GUI vs CLI
-GUI stands for __Graphical User Interface__. GUI are nice because they have nice buttons and images for you to intuitively interact with your computer.
-<br>
-Some examples are Chrome, Sublime, Microsoft Word
+GUI stands for __Graphical User Interface__. GUI are nice because they have nice buttons and images for you to intuitively interact with your computer. Most applications we use these days are GUIs: Chrome, Sublime, Microsoft Word all have textboxes and buttons.
 
-CLI, on the other hand, allows you to interact with computer with text only.
-<br>
-You type something, then computer responses to whatever you typed.
+CLI, on the other hand, allows you to interact with computer with text only: the application only responses to whatever you typed.
 
 ### Terminal
-Terminal is the application that has a command line interface for you to interact with your computer. 
+The terminal provides us with a way to interact with CLI applications.
 
 On Mac, goes to spotlight search (Command+Space) and type `terminal` and hit `Enter`.
 
-On Window, hit and Windows key and type `powershell` and hit `Enter`. 
+On Window, hit and Windows key and type `powershell` and hit `Enter`.
 
-When you first enter, you are in your "`HOME`" directory. This is the current direcotry that you are working with. Imagine that you are in a folder. 
+When you first enter, you are in your "`HOME`" directory. This is the current direcotry that you are working with. Imagine that you are in a folder.
 
 To see the directory/folder that you are currently in. Use the `pwd` command. `pwd` stands for "print working directory".
 ```bash
@@ -285,7 +282,7 @@ $ pwd
 
 If you are in a folder, you should be able to see what is in your current folder/directory. Use `ls` command, which stands for "list".
 ```bash
-$ ls 
+$ ls
 # output: Desktop Document file.txt
 ```
 
@@ -312,11 +309,11 @@ If you have installed node correctly, run `node -v` in terminal.
 $ node -v
 ```
 
-You can also run `node` command. 
+You can also run `node` command.
 Since you have already installed node, your CLI should have a new command called `node` (just as `ls`, `cd`, which are all commands that can be called from the terminal)
 ```bash
-$ node 
-> 
+$ node
+>
 ```
 
 Write JavaScript as you would do in a browser.
@@ -327,8 +324,8 @@ console.log(x + 1);
 Type Ctrl-c twice to exit.
 
 
-### Example: `node sum.js` 
-We create a folder on Desktop called `hackschool-2` and create a file named `sum.js` inside. 
+### Example: `node sum.js`
+We create a folder on Desktop called `hackschool-2` and create a file named `sum.js` inside.
 
 In `sum.js`,
 ```JS
@@ -343,7 +340,7 @@ Now, we navigate to the directory/folder containing `sum.js`. Use `ls` to check 
 
 ```bash
 $ cd Desktop/hackschool-2
-$ ls 
+$ ls
 sum.js
 ```
 
@@ -356,18 +353,18 @@ $ node sum.js
 Output "3" as expected.
 
 
-### Your own server! 
+### Your own server!
 
 What is the code that can start a server? How do we do that knowing literally nothng?
 
-Don't worry about. __Other people has already written the code__ necessary to start a server for you! 
-__Packages__ and __modules__ are the code bundled together to do one thing really well. 
+Don't worry about. __Other people has already written the code__ necessary to start a server for you!
+__Packages__ and __modules__ are the code bundled together to do one thing really well.
 Someone has already written a package called __`Express`__ so we can use it to start our own server in a few lines.
 
 How to we use their package then?
 
 ### NPM (Node package Mangager)
-`NPM` is the program that allows you to download the packages people published online. 
+`NPM` is the program that allows you to download the packages people published online.
 You do not have to install it since it is by default installed along with `node`.
 
 First `cd` to the directory with the `sum.js`. You should already be there if you did nothing else to your terminal.
@@ -375,7 +372,7 @@ This will be where are we put our server code.
 
 Run the following command.
 ```bash
-npm init 
+npm init
 ```
 It is gonna ask you about name of package, version, description and other info.
 We can just let the program set the default by pressing enter.
@@ -391,7 +388,7 @@ author:
 license: (ISC)
 ```
 
-The `npm init` command creates a `package.json`. This file is going to keep track of all the packages we have installed. 
+The `npm init` command creates a `package.json`. This file is going to keep track of all the packages we have installed.
 However, you can just type out the package.json without using `npm init`. But that is unpractical.
 `json` stands a JavaScript Object Notation. `package.json` file is a JavaScript object, in a file.
 
@@ -402,7 +399,7 @@ After all the setup, we can download the `express` package.
 npm install express --save
 ```
 
-Now, we see that `package.json` has changed. 
+Now, we see that `package.json` has changed.
 ```
 "dependencies": {
     "express": "^4.16.4"
@@ -421,7 +418,7 @@ Now, we start a file named `index.js`. Remember, we want to use the `express` pa
 ```JS
 const express = require('express');
 ```
-* `require` is a function that takes in a package name and returns it for you. 
+* `require` is a function that takes in a package name and returns it for you.
 * what is being returned by the `require` function depends on how the author of the package wrote it. It can be number, string, or even function
 * In this case, `express` variable holds a function.
 * What is the difference between `npm install` and `require`? `npm` gets the package online. `require` gets the package locally.
@@ -433,16 +430,16 @@ const app = express();
 Now, the `express` function returns an object with some properties. We name that object `app`.
 
 #### URL
-A URL looks like this, 
+A URL looks like this,
 ```
 www.example.com/user/Galen
 ```
-* `www.example.com` will be translated to the IP address of the server. 
+* `www.example.com` will be translated to the IP address of the server.
 * `/user/Galen` specifies which page in the webpage you are trying to access. This is called an endpoint.
 
 ### First page
 Let's say we want to build a website `www.mypage.com`
-We want our first page to be `www.mypage.com/`. 
+We want our first page to be `www.mypage.com/`.
 
 In our `index.js` file,
 
@@ -454,16 +451,16 @@ app.get('/', (request, response) => {
 app.listen(3000)
 ```
 * The `app` object has a function called `get`.
-* The first input to `get` specifies which page does the user wants to get. 
+* The first input to `get` specifies which page does the user wants to get.
 * We passed in a function as the second input, the function is called when a user is accessing the page.
-* The `get` function passes the 2 objects, `request` and `response` to our function. 
+* The `get` function passes the 2 objects, `request` and `response` to our function.
 * `request` is the thing coming from the browser.
 * `response` is what goes back to the browser.
 * The `response` object provides some function that allows us to send response. One of them is `sendFile`
 * `__dirname` is the directory name of this file. It is whatever is printed by the `pwd` command.
 * We passed the __path__ to our HTML file and it will be sent to the user whenever they are trying to access to page.
 
-Let's type in `localhost:3000/` in our browser in see what happens. When we do this, we're using our laptop as both a server and a client. Remember that we don't put our server code in Arizona while we're developing. 
+Let's type in `localhost:3000/` in our browser in see what happens. When we do this, we're using our laptop as both a server and a client. Remember that we don't put our server code in Arizona while we're developing.
 
 <b>We get our page!!!!!!!!</b>
 
@@ -471,7 +468,7 @@ What happens if we try accessing "other page", like `localhost:3000/user/Galen`?
 
 We get an error, becuase there is no such page! We only defined the endpoint `/`
 
-We can change our `get` function. 
+We can change our `get` function.
 ```JS
 app.get('/mypage', (request, response) => {
     response.sendFile(__dirname + '/index.html');
@@ -495,11 +492,11 @@ app.get('/random', (request, response) => {
 ```
 This shows that the server processes data and sends it back.
 
-What is a `port`? Let's say you want to host 2 webpages on your computer at the same time. 
-But your computer only has one IP address. 
-So, computer scientist invented this concept called `port`, which means there are multiple "entry points" on your computer/server. 
+What is a `port`? Let's say you want to host 2 webpages on your computer at the same time.
+But your computer only has one IP address.
+So, computer scientist invented this concept called `port`, which means there are multiple "entry points" on your computer/server.
 
-Try changing `app.listen(3000)` to `app.listen(8080)`. 
+Try changing `app.listen(3000)` to `app.listen(8080)`.
 
 Now, we can only access our page at `localhost:8080/mypage`.
 
