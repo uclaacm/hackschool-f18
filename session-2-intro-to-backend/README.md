@@ -391,16 +391,16 @@ Now, we start a file named `index.js`. Remember, we want to use the `express` pa
 ```JS
 const express = require('express');
 ```
-* `require` is a function that takes in a package name and return it for you. 
+* `require` is a function that takes in a package name and returns it for you. 
 * what is being returned by the `require` function depends on how the author of the package wrote it. It can be number, string, or even function
 * In this case, `express` variable holds a function.
-* `npm` gets the package online. `require` is going to gets the package from local.
+* What is the difference between `npm install` and `require`? `npm` gets the package online. `require` gets the package locally.
 
 ```JS
 const express = require('express');
 const app = express();
 ```
-Now, the `express` function returns an object with some property. We name that object `app`.
+Now, the `express` function returns an object with some properties. We name that object `app`.
 
 #### URL
 A URL looks like this, 
@@ -408,7 +408,7 @@ A URL looks like this,
 www.example.com/user/Galen
 ```
 * `www.example.com` will be translated to the IP address of the server. 
-* `/user/Galen` specifies which page in the webpage you are trying to access.
+* `/user/Galen` specifies which page in the webpage you are trying to access. This is called an endpoint.
 
 ### First page
 Let's say we want to build a website `www.mypage.com`
@@ -433,13 +433,13 @@ app.listen(3000)
 * `__dirname` is the directory name of this file. It is whatever is printed by the `pwd` command.
 * We passed the __path__ to our HTML file and it will be sent to the user whenever they are trying to access to page.
 
-Let's type in `localhost:3000/` in our browser in see what happens. 
+Let's type in `localhost:3000/` in our browser in see what happens. When we do this, we're using our laptop as both a server and a client. Remember that we don't put our server code in Arizona while we're developing. 
 
 <b>We get our page!!!!!!!!</b>
 
 What happens if we try accessing "other page", like `localhost:3000/user/Galen`?
 
-We get an error, becuase there is no such page! We only defined the page `/`
+We get an error, becuase there is no such page! We only defined the endpoint `/`
 
 We can change our `get` function. 
 ```JS
@@ -463,14 +463,13 @@ app.get('/random', (request, response) => {
     response.end();
 });
 ```
-This shows that the server process data and send it back.
+This shows that the server processes data and sends it back.
 
 What is a `port`? Let's say you want to host 2 webpages on your computer at the same time. 
 But your computer only has one IP address. 
-So, computer scientist invented this concept called `port`, which means there are multiple "entry point" on your computer/server. 
+So, computer scientist invented this concept called `port`, which means there are multiple "entry points" on your computer/server. 
 
 Try changing `app.listen(3000)` to `app.listen(8080)`. 
 
 Now, we can only access our page at `localhost:8080/mypage`.
-
 
