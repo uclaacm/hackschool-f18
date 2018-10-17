@@ -34,23 +34,47 @@ Open Console in your Chrome Browser Developer's Tool:
 
 Write a line of code, which are just instructions to the computer. JavaScript is executed line by line, once you hit enter. Chrome will execute your code. 
 
-### 1. Variables
-`Variable` is a fundamental concept in programming. Variables are __assigned__ values. 
+### 1. Values
+
+Every programming language has the ability to store a value, like a number, or a "string" (a sequence of characters surrounded by quotes).
+
+```js
+3
+'Galen'
+```
+
+Programming languages like JavaScript also allow us to manipulate values, like adding and multiplying numbers or "concatenating"/joining strings together.
+
+```js
+3 + 3
+3.14 * 3 * 3
+'Galen ' + 'Wong'
+```
+
+![Result as seen on DevTools for adding numbers and concatenating strings](images/values.png)
+
+### 2. Variables
+
+Eventually, values can get too complicated to type out every single time we need to use that value. Imagine the constant *π*: not everyone can remember more than a few digits of *π*. It's easier to give this value a name.
+
+Here's where "variables" come in. They are basically names for values that we can refer to. In JavaScript, each variable is **assigned** a value.
+
+We can think of a variable as a box with a name tag that contains some value.
 
 Let's create/__declare__ a variable called age. 
 ```JS
 let age;
-// note that semicolon (;) is not a must in JavaScript
-// It is just nice to have. 
+// Note: the semicolon (;) is not a must in JavaScript.
+// It is just nice to have for consistency. 
 ```
 
-We can assign a value to it with an equal sign (`=`). <br> Then output it with `console.log(age)`
+We can assign a value to it with an equal sign (`=`). Then print it out in the console with `console.log(age)`.
 ```JS
 age = 9;
 console.log(age);
 ```
 
-We can overwrite/change its value by assigning another value to it. 
+We can then overwrite/change its value by assigning another value to it. 
 ```JS
 age = 10;
 console.log(age);
@@ -68,37 +92,43 @@ console.log(x + 2)
 // 7
 ```
 
-We can think of a variable as a box with a name tag that contains some value.
-
 If you never reassign your vairable, you can use `const` to declare the variable to make it a constant. 
 
 ```JS
 const thisMustBeOne = 1;
+const pi = 3.1415926535897932;
 ```
+
 If you try to change it, the browser will throw an error.
+
 ```JS
 thisMustBeOne = 2;
 // Uncaught TypeError: Assignment to constant variable.
+pi = pi * 2;
+// Uncaught TypeError: Assignment to constant variable.
 ```
 
->Side note: the "lowerCaseUpperCase" naming convention is used by a lot of programmers. (Technically called "Camel Case") You can also use underscore_naming_method instead.
+![Result as seen on DevTools for trying to change constant variables](images/values.png)
 
-Variable can also be "strings", which are a bunch of characters in quotes. 
+> Side note: the "lowerCaseUpperCase" naming convention is used by a lot of programmers. (Technically called "Camel Case.") Some people also like using the snake\_case naming method instead, though it's more rarely seen with JavaScript.
+
+Variable can also be strings, which are a bunch of characters in quotes. 
 
 ```JS
-let name = "Kristie";
+let name = 'Kristie';
 console.log(name);
 ```
 
-> For you C++/Java folks, there is no need to specify a type of variable/constant. JavaScript handles typing for you :)
+> For folks with experience in some other programming language, there is no need to specify the type of a variable in JavaScript. Any variable can contain a value of any type.
 
-In JavaScript, we can use single quotes or double quotes. Both are valid.
+In JavaScript, we can use single quotes or double quotes. Both are valid. For consistency, we'll be using single quotes moving forward.
 ```JS
-name = 'Galena';
+name = "Galena";
 ```
+
 You can "add" strings togeter. This is called __concatenation__, meaning joining two things together.
 ```JS
-console.log("Hello " + name);
+console.log('Hello ' + name);
 // Hello Galena
 ```
 
@@ -116,13 +146,13 @@ console.log(str + str);
 ```
 
 Answer: 
-* Case 1: `2`
-* Case 2: `11`
+* Case 1: **`2`**. We are adding a number to another number, so 2 is the result.
+* Case 2: **`11`**. Note, the `'1'` here is surrounded by quotes, which makes it a string. When one adds a string to another string, they are concatenated.
 
-### 2. Functions
+### 3. Functions
 Beside numbers and strings, you can also assign functions to variables. 
 
-A function is something that performs some action and returns a value. 
+A function is something that performs some action and optionally returns a value. 
 
 Syntax of function in JavaScript looks like this.
 ```JS
@@ -189,7 +219,7 @@ const quickMaths = () => {
 }
 ```
 
-### 3. Obejcts
+### 4. Obejcts
 Objects are collection of data. 
 Let's make an object called `person` and he goes to school in UCLA.
 
