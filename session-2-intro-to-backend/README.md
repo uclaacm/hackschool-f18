@@ -461,10 +461,23 @@ https://www.example.com/user/Galen
 * `/user/Galen` specifies which page in the webpage you are trying to access. This is called an endpoint.
 
 ### First page
-Let's say we want to build a website `www.mypage.com`
-We want our first page to be `www.mypage.com/`.
+Let's say we want to build a website `www.mypage.com`. We want our first page to be `http://www.mypage.com/`.
 
-In our `index.js` file,
+We first create an HTML file, calling it `index.html`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+</head>
+<body>
+    <h1> Hello, this is my first server. </h1>
+</body>
+</html>
+```
+
+Then, in our `index.js` file, append
 
 ```JS
 app.get('/', (request, response) => {

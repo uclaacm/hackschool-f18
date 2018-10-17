@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/hello.html');
-})
+app.get('/mypage', (request, response) => {
+  response.sendFile(__dirname + '/index.html');
+});
 
-app.listen(3000)
+app.get('/random', (request, response) => {
+  response.send('<!DOCTYPE html><html><body>Your random number is: ' + Math.random() + '</body></html>');
+  response.end();
+});
+
+app.listen(3000);
