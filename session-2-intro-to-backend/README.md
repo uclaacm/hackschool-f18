@@ -108,7 +108,7 @@ pi = pi * 2;
 // Uncaught TypeError: Assignment to constant variable.
 ```
 
-![Result as seen on DevTools for trying to change constant variables](images/values.png)
+![Result as seen on DevTools for trying to change constant variables](images/const-assignment.png)
 
 > Side note: the "lowerCaseUpperCase" naming convention is used by a lot of programmers. (Technically called "Camel Case.") Some people also like using the snake\_case naming method instead, though it's more rarely seen with JavaScript.
 
