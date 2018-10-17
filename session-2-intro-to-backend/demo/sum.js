@@ -1,6 +1,11 @@
 const sum = (x, y) => {
 	return x + y;
-}
+};
 
-console.log(sum(1, 2))
+const sumBodyOnceToldMe = () => {
+	console.log('The world is gonna roll me');
+};
+
+console.log(sum(1, 2));
+sumBodyOnceToldMe();
 
