@@ -1,4 +1,4 @@
-# HackSchool Session 2: Introduction to Backend Development
+# Hackschool Session 2: Introduction to Backend Development
 **Location**: Covel 227
 **Time**: 6-8pm
 
