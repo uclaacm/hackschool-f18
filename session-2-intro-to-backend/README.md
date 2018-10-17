@@ -1,11 +1,13 @@
 # Hackschool Session 2: Introduction to Backend Development
-**Location**: Covel 227
+**Location**: Covel 227, UCLA
+
 **Time**: 6-8pm
 
 **Teachers**
+* Timothy Gu
 * Galen Wong
 
-# Resources
+## Resources
 
 **Slides**
 * [Session 2 - Introduction to Backend Development](tinyurl.com/hackschool2018-2)
@@ -16,14 +18,14 @@
 **Install Node.js**
 * [Install Node.js](https://nodejs.org/en/download/)
 
-# What we'll be learning today
+## What we'll be learning today
 * What is a "Server"?
 * Basic JavaScript
 * Command Line
 * Node.js
 * NPM
 
-# Goal of today
+## Goal of today
 * Create your own server in node.js
 
 ## JavaScript
