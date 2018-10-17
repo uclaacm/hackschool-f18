@@ -125,7 +125,7 @@ console.log(name);
 
 In JavaScript, we can use single quotes or double quotes. Both are valid. For consistency, we'll be using single quotes moving forward.
 ```JS
-name = "Galena";
+name = 'Galena';
 ```
 
 You can "add" strings togeter. This is called __concatenation__, meaning joining two things together.
@@ -160,19 +160,19 @@ Syntax of function in JavaScript looks like this.
 ```JS
 // Syntax 1
 const functionName = (input1, input2) => {
-    // actions and statements...
+  // actions and statements...
 };
 
 // Syntax 2
 function functionName(input1, input2) {
-    // actions and statements...
+  // actions and statements...
 }
 ```
 
 Let's write a function called "plus" that adds or concatenates two values together.
 ```JS
-const plus = (a, b) => {
-    return a + b;
+const plus = (x, y) => {
+  return x + y;
 };
 ```
 To call/use the function,
@@ -194,67 +194,73 @@ Inputs are called "parameters" or "arguments".
 We can also have function without input parameters
 ```JS
 const saySomething = () => {
-    return "I'm giving up on you";
+  return "I'm giving up on you";
 };
 ```
 
 We can also have function that returns nothing.
 ```JS
 const printHello = () => {
-    console.log('Heeeeeeeeeeello');
-    // no return statement
+  console.log('Heeeeeeeeeeello');
+  // no return statement
 };
 ```
 
-We can have as much statements in function as we plaese.
+We can have as much statements in function as we please.
 ```JS
 const printNoot = () => {
-    console.log('noot');
-    console.log('noot noot');
-    console.log('noot noot noot');
+  console.log('noot');
+  console.log('noot noot');
+  console.log('noot noot noot');
 };
 ```
 
-We can call other functinos within some function
+We can even call other functions within some function
 ```JS
 const quickMaths = () => {
-    return plus(2, 2) - 1;
+  return plus(2, 2) - 1;
 };
 ```
 
-### 4. Obejcts
-Objects are collection of data.
-Let's make an object called `person` and he goes to school in UCLA.
+### 4. Objects
+Objects in JavaScript are collection of data. Each piece of data has a "key" and a "value".
+
+Let's make an object called `person` and they go to school in UCLA.
 
 Here is the syntax.
 
 ```JS
 let person = {
-    age: 18, // notice the comma
-    school: 'UCLA'
+  age: 18, // notice the comma
+  school: 'UCLA'
 };
 ```
-You see object can hold different types of data.
 
-We can add more data to it.
+Here the `age` is the key, while `18` is the value. Each pair is also known as a **property** of the `person` object.
+
+To get the value of a property, we can put a dot between the object variable and the property key: `person.age` will give us 18, while `person.school` will give us `'UCLA'`.
+
+Objects can hold different types of data.
+
+We can even add more data to it…
 ```JS
 person.birthday = '9 Nov 1800';
 person['name'] = 'M&M'; // alternative syntax, notice the quote
 ```
 
-We can change existing data.
+… or change existing properties …
 ```JS
-person.age = 218;
+person.age = 217;
 ```
 
-We can put function in to objects as data as well.
+We can put functions into objects as properties as well.
 ```JS
 person.rap = () => {
-    console.log("I'm beginning to feel like a web god, web god.");
+  console.log("I'm beginning to feel like a web god, web god.");
 };
 ```
 
-We can tell M&M to rap for us by calling the rap function like this.
+We can tell M&M to rap for us by calling the `rap` function like this.
 ```JS
 person.rap()
 // I'm beginning to feel like a web god, web god.
@@ -341,10 +347,10 @@ We create a folder on Desktop called `hackschool-2` and create a file named `sum
 In `sum.js`,
 ```JS
 const sum = (x, y) => {
-    return x + y;
+  return x + y;
 };
 
-console.log(sum(1 ,2));
+console.log(sum(1, 2));
 ```
 
 Now, we navigate to the directory/folder containing `sum.js`. Use `ls` to check if it is there.
@@ -414,7 +420,7 @@ $ npm install --save express
 If we open `package.json`, we see that the file has changed.
 ```
 "dependencies": {
-    "express": "^4.16.4"
+  "express": "^4.16.4"
 }
 ```
 
@@ -462,7 +468,7 @@ In our `index.js` file,
 
 ```JS
 app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/index.html');
+  response.sendFile(__dirname + '/index.html');
 });
 
 app.listen(3000)
@@ -494,7 +500,7 @@ We can change the string we are passing to `app.get()`, so that it now responds 
 
 ```JS
 app.get('/mypage', (request, response) => {
-    response.sendFile(__dirname + '/index.html');
+  response.sendFile(__dirname + '/index.html');
 });
 ```
 
@@ -508,8 +514,8 @@ For now, our server only serves a local HTML file that doesn't change. The true 
 
 ```JS
 app.get('/random', (request, response) => {
-    response.send('<!DOCTYPE html><html><body>Your random number is: ' + Math.random() + '</body></html>');
-    response.end();
+  response.send('<!DOCTYPE html><html><body>Your random number is: ' + Math.random() + '</body></html>');
+  response.end();
 });
 ```
 
