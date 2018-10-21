@@ -41,9 +41,8 @@ Think about the following scenario.
 ### The God of Meme
 You saw the line in the career fair last week and you would like to make meme about it and post it to the Meme page.
 
-![Meme Page Banner](images/memepage.jpg)
-
-![Post meme](images/postmeme.png)
+<img src="images/memepage.jpg" width="500px">
+<img src="images/postmeme.png" width="321px">
 
 
 You get your hot meme image ready to post it on Facebook.
