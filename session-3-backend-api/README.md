@@ -116,11 +116,14 @@ Let's try it out
 
 * Open network tab in Chrome developer console
 
-* Go to hackschool18.azurewesites.net/upload
+* Go to hackschool18.azurewebsites.net/upload
+
+* Open the new tab hackschool18.azurewebsites.net to see your message
 
 * Type in your name/messages and click Send
 
 * See the upload in console!
+
 
 We can see in the request header, we have method as `POST`.
 
@@ -179,6 +182,7 @@ Now, we know that we cannot do `POST` request with a browser. Postman can do tha
 * Choose the `body` tab  
 * Select `raw` and choose `JSON (application/json)`
 * Type the following
+* Open the new tab hackschool18.azurewebsites.net to see your message
 
 ```JS
 {
