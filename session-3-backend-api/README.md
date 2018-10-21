@@ -67,10 +67,10 @@ The HTTP protocol defines how the request from the client should be formatted, i
 A request is just a string that is being sent to the server. The rules set by HTTP allows the server to interpret the string to understand what user wants.
 
 
-A HTTP request is usually comprised 2 parts, __header__ and __body__.
+A HTTP request usually comprises 2 parts, __header__ and __body__.
 
 ### 1. Header
-A header is piece of text (string) that a client sends to a server contiaining what the user wants from the server.
+A header is piece of text (string) that a client sends to a server containing what the user wants from the server.
 
 We can actually see the request inside the developer console in Chrome.
 
@@ -301,7 +301,7 @@ const express = require('express');
 const app = express();
 ```
 
-Let's make an endpoint to return some random numer in JSON. 
+Let's make an endpoint to return some random number in JSON. 
 
 ```JS
 app.get('/random', (req, res) => {
