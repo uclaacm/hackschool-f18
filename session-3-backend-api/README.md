@@ -224,7 +224,7 @@ A HTTP response is just like a request.
 It has __header__ and __body__.
 
 
-In `header`, there is a field called `status` containing a number. That number indicates if your request was succesful.
+In `header`, there is a field called `status` containing a number. That number indicates if your request was successful.
 
 ```
 2XX: The request was successful
