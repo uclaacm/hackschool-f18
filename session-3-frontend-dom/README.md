@@ -303,7 +303,7 @@ Reasons that I won't be going over today, but you can read about
 [here](https://en.wikipedia.org/wiki/RGB_color_model#Numeric_representations) if
 you want feed your brain extra well today! 🧠
 
-So, for now, let's just under the assumption there are 255 different values for
+So, for now, let's just go under the assumption there are 255 different values for
 red. 0 is no red, 255 is **_maximum_** red. The same goes for green and blue.
 So, to make pure red, you would have an RGB representation of:
 
@@ -415,7 +415,7 @@ _toggling_.
 Lastly, we once again use the DOM's built-in `onclick` detection to make our
 lives wayyyyy easier. Basically, we can access any element we want on the page,
 set its `onclick` property to any function we want, and the browser will do all
-the heavy lifting! Isn't the DOM magical? ✨🔮✨
+the heavy-lifting! Isn't the DOM magical? ✨🔮✨
 
 ### Time to Find the Time
 
@@ -537,7 +537,7 @@ let rawRed = (hours / 24) * 255;
 ```
 
 You might be wondering _Why "raw" red?_ Well, this is because Safari is buggy
-with fractional RGB values, so we are going to have round this value.
+with fractional RGB values, so we are going to have to round this value.
 
 Round like this:
 
