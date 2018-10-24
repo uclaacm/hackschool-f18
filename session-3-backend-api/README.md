@@ -24,22 +24,20 @@
 * What is JSON?
 * What is an API?
 
-## Goal of today
+## Goal of Today
 * Create your own API in node.js
 
 
 ## What is HTTP?
 
-Previously, we talked about typing a URL into the browser. 
-We know that we will send a request to a server.
-And we also coded a server that returns a HTML page.
+Previously, we talked about typing a URL into the browser. We know that we will send a request to a server, and we also coded a server that returns a HTML page.
 
-However, is that all client and server can do?
+However, is that all that the client and server can do?
 
-Think about the following scenario. 
+Think about the following scenario: 
 
-### The God of Meme
-You saw the line in the career fair last week and you would like to make meme about it and post it to the Meme page.
+### The God of Memes
+You saw the line for the career fair last week, and you want to make meme about it and post it to the meme page.
 
 <img src="images/memepage.jpg" width="500px">
 <img src="images/postmeme.png" width="321px">
@@ -49,40 +47,40 @@ You get your hot meme image ready to post it on Facebook.
 
 You click Post. 
 
-Now, your image is being uploaded to a server. Then, other people can request the server to see the meme that you posted.
+Now, your image is being uploaded to a server. Then, other people can request the server for the meme that you posted.
 
-We have discovered a new way that client and server can talk to each other.
+We have discovered a new way that the client and server can talk to each other.
 
-So apart from client requesting the server for some data, client can also upload data to the server!
+So apart from the client **requesting** the server for some data, it can also **upload** data to the server!
 
-But now, server runs into a problem, how does server know client's request is for getting a webpage, or for uploading a meme?
+But now, the server runs into a problem: how does it know that the client's request is for getting a webpage, or for uploading a meme?
 
 This is where __HTTP__ gets into the picture. 
 
 ### HTTP format
 HTTP stands for __Hypertext Transfer Protocol__.
 
-The HTTP protocol defines how the request from the client should be formatted, it also defines how the response from the server should be formatted.
+The HTTP protocol defines how the request from the client should be formatted, and it also defines how the response from the server should be formatted.
 
-A request is just a string that is being sent to the server. The rules set by HTTP allows the server to interpret the string to understand what user wants.
+A request is just a string that is being sent to the server. The rules set by HTTP allow the server to interpret the string to understand what user wants.
 
 
-A HTTP request usually comprises 2 parts, __header__ and __body__.
+A HTTP request is usually comprised of two parts: the __header__ and the __body__.
 
 ### 1. Header
 A header is piece of text (string) that a client sends to a server containing what the user wants from the server.
 
 We can actually see the request inside the developer console in Chrome.
 
-* Right click on any page, click `Inspect`. Or just <kbd>Command Option i</kbd> on Mac, <kbd>Ctrl Shift J</kbd> on Windows.
+* Right click on any page, then click `Inspect`. Or just <kbd>Command Option i</kbd> on Mac, <kbd>Ctrl Shift J</kbd> on Windows.
 
-* Open the networking tab in Developer console.
+* Open the networking tab in the Developer console.
 
 * Go to `www.google.com`
 
 * Click on the `www.google.com` column on the console.
 
-* Go to `Headers` tab
+* Go to the `Headers` tab
 
 You can see the Request Header!
 
@@ -90,7 +88,7 @@ It has information about `path`, which specifies which page you want from `www.g
 
 
 ### 2. Body
-If you are uploading images, or text, the body will contain all the data.
+If you are uploading images or text, for example, the body will contain all the data.
 
 ## HTTP Methods
 
@@ -107,29 +105,29 @@ And it will sends it to the server.
 ### POST
 A `POST` method is used usually when we try to upload something, text or file. 
 
-But how do we send a request with a `POST` method? We cannot type in an URL in the browser, since there is no way that we can specify the file/text we want to upload.
+But how do we send a request with a `POST` method? We can't just type in a URL in the browser, since there would be no way for us specify the file/text that we want to upload.
 
 `POST` requests are usually done under the hood for you by JavaScript. 
 
-Let's try it out
+Let's try it out:
 
-* Open network tab in Chrome developer console
+* Open the network tab in the Chrome developer console
 
-* Go to hackschool18.azurewebsites.net/upload
+* Go to `hackschool18.azurewebsites.net/upload`
 
-* Open the new tab hackschool18.azurewebsites.net to see your message
+* Open the new tab `hackschool18.azurewebsites.net` to see your message
 
-* Type in your name/messages and click Send
+* Type in your name/messages and click Send.
 
 * See the upload in console!
 
 
-We can see in the request header, we have method as `POST`.
+We can see in the request header, we have a method as `POST`.
 
 We can also see the `Request Payload`, which is the `body`, containing the message that we send.
 
 ```JS
-{ message: 'my msg', sender: 'Krisite' }
+{ message: 'my msg', sender: 'Kristie' }
 ```
 
 The format looks familiar right?
@@ -138,7 +136,7 @@ The format looks familiar right?
 
 JSON is __JavaScript Object Notation__. We represent data in the JSON format, as we would in JavaScript.
 
-We see from the above example that we can send our data in forms of a JSON. 
+We see from the above example that we can send our data in the form of JSON. 
 
 Now, an interesting thing is that not only can we request to `GET` a HTML page from the server,
 we can also `GET` data from the server in form of JSON. 
@@ -174,14 +172,14 @@ Let's try with the cat fact example again.
 cat-fact.herokuapp.com/facts/random
 ```
 
-Now, we know that we cannot do `POST` request with a browser. Postman can do that for us. 
+Now, we know that we cannot perform a `POST` request with a browser, but Postman can do that for us. 
 
 * Put `hackschool18.azurewebsites.net/message`
 * Select `POST` next the URL field
 * Choose the `body` tab  
 * Select `raw` and choose `JSON (application/json)`
 * Type the following
-* Open the new tab hackschool18.azurewebsites.net to see your message
+* Open the new tab `hackschool18.azurewebsites.net` to see your message
 
 ```JS
 {
@@ -198,8 +196,7 @@ Notice that Postman automatically sets one property in the header.
 Content-Type: application/json
 ```
 
-`Content-Type` in header tells the server what is inside our `body`, then server knows how to interpret/understand the body string.
-In this case, the server will interpret the body string as a JSON/JavaScript object. 
+`Content-Type` in header tells the server what is inside our `body`. That way, the server knows how to interpret/understand the body string. In this case, the server will interpret the body string as a JSON/JavaScript object. 
 
 Also notice that we get a JSON response back.
 ```JS
@@ -207,8 +204,7 @@ Also notice that we get a JSON response back.
     "status": "Success!"
 }
 ```
-This means that in a POST request, although we are uploading things, server can still send stuff back too!
-If the server wants, it can send back a HTML page. 
+This means that in a POST request, although we are uploading things, the server can still send a response back too! If the server wants, it could send back a HTML page. 
 
 ### What is under the hood in browser?
 
@@ -218,13 +214,12 @@ It formatted the request header and body, and send it to the server using the UR
 ## HTTP Status Code
 Ok, let's say you are uploading a message. How do you know that your message got successfully uploaded?
 
-Then, the __repsonse__ is going to help us!
+The __repsonse__ can tell us!
 
-A HTTP response is just like a request. 
-It has __header__ and __body__.
+A HTTP response is just like a request. It has a __header__ and __body__.
 
 
-In `header`, there is a field called `status` containing a number. That number indicates if your request was successful.
+In the `header`, there is a field called `status` containing a number. That number indicates if your request was successful.
 
 ```
 2XX: The request was successful
@@ -232,46 +227,39 @@ In `header`, there is a field called `status` containing a number. That number i
 5XX: The request was not successful and server probably messed up.
 ```
 
-In `body`, it will conatins whatever data is sent back. 
-It can be JSON/HTML or even random string of text, or nothing at all.
+In the `body`, it will conatin whatever data is sent back. The data can be JSON/HTML, a random string of text, or even nothing at all.
 
 
 Let's check the Chrome developer console and go to `www.google.com`.
 
 * We can find `status` in the `Response Header` tab under the `Header` section.
-* We can also see the `Response` tab to see what is contained in the body
+* We can also see the `Response` tab to see what is contained in the body.
 * The `Preview` tab provides a prettier view of the `body` data.
 
 We can do this in Postman as well.
 
-Let's send a message to `hackschool18.azurewebsites.net/message` but without body.
+Let's send a message to `hackschool18.azurewebsites.net/message` but without a body.
 
 We can see the error code, and nothing is being returned. 
 
 ![400 bad request](images/400postman.png)
 
 ## What is an API?
-API stands for __Application Programming Interface__.
-An API is a definition of methods of communication among various 'components'. 
+API stands for __Application Programming Interface__. An API is a definition of methods of communication among various 'components'. 
 
 
 How is it different from HTTP then? 
-* HTTP defines how computer talk to each other over the world wide web. 
-* A web API defines how frontend code communicates with backend code.
+* HTTP defines how computers can talk to each other over the world wide web. 
+* A web API defines how frontend code can communicate with backend code.
 
 
-It is pretty abstract but don't worry. As you get more and more experience, you can tell what is an API.
+It is pretty abstract but don't worry. As you get more and more experienced, you'll gain an intuition for what an API is.
 
-In the web context, API usually refers to endpoints that we can call to retrieve some data. For example, the cat facts endpoint is an API to retrieve JSON data of, well, cat facts.
+In the web context, an API usually refers to a set of specific endpoints that we can call to retrieve some data. 
 
-It is an API because we __HAVE TO__ use a GET method to make a request to the specific URL. 
-There are restrictions to how we can talk to the server. Therefore it is an API.
+For example, the cat facts endpoint is part of an API to retrieve JSON data of, well, cat facts. We __HAVE TO__ use a GET method to make a request to the specific URL. There are restrictions on how we can talk to the server, and therefore, it is part of an API.
 
-Moreover, the URL to POST a message we just did was also an API. 
-
-It is an API because we __HAVE TO__ use a POST method to make a request to the specific URL. 
-And we also have to make sure we have a JSON object in the body that has the key `sender` and `messsage`/
-There are rules to how we upload a message. Therefore, it is an API.
+Moreover, the URL to POST a message we just did was also a part of an API. We __HAVE TO__ use a POST method to make a request to the specific URL. We also have to make sure we have a JSON object in the body that has the key `sender` and `messsage`. There are rules to how we upload a message, and therefore, it is part of an API.
 
 
 ## Write your own API
@@ -301,7 +289,7 @@ const express = require('express');
 const app = express();
 ```
 
-Let's make an endpoint to return some random number in JSON. 
+Let's make an endpoint to return some random numbers in JSON. 
 
 ```JS
 app.get('/random', (req, res) => {
@@ -322,7 +310,7 @@ We do a `GET` to `localhost:8080/random` in Postman.
 
 However, what happens when we do a `POST` on that URL?
 
-We get a 404 Not Found. Reason is that we only defined what will happens when a `GET` request is made to the endpoint with the `app.get` function, not a `POST` request.
+We get a 404 Not Found. The reason is that we only defined what will happens when a `GET` request is made to the endpoint with the `app.get` function, not a `POST` request.
 
 
 Let us write an endpoint that receives something from the user. 
@@ -391,5 +379,5 @@ What if we remove the `name` key?
 
 Now we get an error with status code `400`!
 
-There you go, you have written your first API!
+You have just written your first API!
 
