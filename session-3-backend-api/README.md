@@ -60,7 +60,7 @@ This is where __HTTP__ gets into the picture.
 ### HTTP format
 HTTP stands for __Hypertext Transfer Protocol__.
 
-The HTTP protocol defines how the request from the client should be formatted, and it also defines how the response from the server should be formatted.
+The HTTP protocol defines how the request from the client should be formatted, and also defines how the response from the server should be formatted.
 
 A request is just a string that is being sent to the server. The rules set by HTTP allow the server to interpret the string to understand what user wants.
 
@@ -74,7 +74,7 @@ We can actually see the request inside the developer console in Chrome.
 
 * Right click on any page, then click `Inspect`. Or just <kbd>Command Option i</kbd> on Mac, <kbd>Ctrl Shift J</kbd> on Windows.
 
-* Open the networking tab in the Developer console.
+* Open the network tab in the Chrome DevTools.
 
 * Go to `www.google.com`
 
@@ -111,11 +111,11 @@ But how do we send a request with a `POST` method? We can't just type in a URL i
 
 Let's try it out:
 
-* Open the network tab in the Chrome developer console
+* Open the network tab in the Chrome DevTools
 
-* Go to `hackschool18.azurewebsites.net/upload`
+* Go to `http://hackschool18.azurewebsites.net/upload`
 
-* Open the new tab `hackschool18.azurewebsites.net` to see your message
+* Open the new tab `http://hackschool18.azurewebsites.net` to see your message
 
 * Type in your name/messages and click Send.
 
@@ -172,14 +172,14 @@ Let's try with the cat fact example again.
 cat-fact.herokuapp.com/facts/random
 ```
 
-Now, we know that we cannot perform a `POST` request with a browser, but Postman can do that for us. 
+Now, we know that we cannot perform a `POST` request with a browser directly, but we can with Postman. 
 
-* Put `hackschool18.azurewebsites.net/message`
+* Put `http://hackschool18.azurewebsites.net/message`
 * Select `POST` next the URL field
 * Choose the `body` tab  
 * Select `raw` and choose `JSON (application/json)`
 * Type the following
-* Open the new tab `hackschool18.azurewebsites.net` to see your message
+* Open the new tab `http://hackschool18.azurewebsites.net` to see your message
 
 ```JS
 {
@@ -196,7 +196,7 @@ Notice that Postman automatically sets one property in the header.
 Content-Type: application/json
 ```
 
-`Content-Type` in header tells the server what is inside our `body`. That way, the server knows how to interpret/understand the body string. In this case, the server will interpret the body string as a JSON/JavaScript object. 
+`Content-Type` in header tells the server what is inside our `body`. That way, the server knows how to interpret/understand the body string. In this case, the server will interpret the body string as JSON, or a JavaScript object. 
 
 Also notice that we get a JSON response back.
 ```JS
@@ -214,7 +214,7 @@ It formatted the request header and body, and send it to the server using the UR
 ## HTTP Status Code
 Ok, let's say you are uploading a message. How do you know that your message got successfully uploaded?
 
-The __repsonse__ can tell us!
+The __respsonse__ can tell us!
 
 A HTTP response is just like a request. It has a __header__ and __body__.
 
@@ -238,7 +238,7 @@ Let's check the Chrome developer console and go to `www.google.com`.
 
 We can do this in Postman as well.
 
-Let's send a message to `hackschool18.azurewebsites.net/message` but without a body.
+Let's send a message to `http://hackschool18.azurewebsites.net/message` but without a body.
 
 We can see the error code, and nothing is being returned. 
 
@@ -249,9 +249,9 @@ API stands for __Application Programming Interface__. An API is a definition of 
 
 
 How is it different from HTTP then? 
-* HTTP defines how computers can talk to each other over the world wide web. 
-* A web API defines how frontend code can communicate with backend code.
 
+* You, the programmer, define the Web APIs you use. On the other hand, HTTP is predefined by engineers of the Internet.
+* Web APIs depend on HTTP.
 
 It is pretty abstract but don't worry. As you get more and more experienced, you'll gain an intuition for what an API is.
 
