@@ -74,7 +74,7 @@ We can actually see the request inside the developer console in Chrome.
 
 * Right click on any page, then click `Inspect`. Or just <kbd>Command Option i</kbd> on Mac, <kbd>Ctrl Shift J</kbd> on Windows.
 
-* Open the networking tab in the Developer console.
+* Open the network tab in the Chrome DevTools.
 
 * Go to `www.google.com`
 
@@ -227,7 +227,7 @@ In the `header`, there is a field called `status` containing a number. That numb
 5XX: The request was not successful and server probably messed up.
 ```
 
-In the `body`, it will conatin whatever data is sent back. The data can be JSON/HTML, a random string of text, or even nothing at all.
+In the `body`, it will contain whatever data is sent back. The data can be JSON/HTML, a random string of text, or even nothing at all.
 
 
 Let's check the Chrome developer console and go to `www.google.com`.
@@ -238,7 +238,7 @@ Let's check the Chrome developer console and go to `www.google.com`.
 
 We can do this in Postman as well.
 
-Let's send a message to `hackschool18.azurewebsites.net/message` but without a body.
+Let's send a message to `http://hackschool18.azurewebsites.net/message` but without a body.
 
 We can see the error code, and nothing is being returned. 
 
@@ -246,7 +246,6 @@ We can see the error code, and nothing is being returned.
 
 ## What is an API?
 API stands for __Application Programming Interface__. An API is a definition of methods of communication among various components. 
-
 
 What are the differences between an API and HTTP then, or how are they related?
 * HTTP defines how computers can talk to each other over the world wide web.
@@ -256,7 +255,6 @@ What are the differences between an API and HTTP then, or how are they related?
   * Can define your own APIs
     * "To receive information about a Facebook user, make a GET request to `https://graph.facebook.com/{user-id}`"
 * Web APIs rely on HTTP to specify what can and can't be done with specific endpoints/URLs in the API.
-
 
 It is pretty abstract but don't worry. As you get more and more experienced, you'll gain an intuition for what an API is.
 
