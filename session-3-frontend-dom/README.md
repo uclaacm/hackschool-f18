@@ -810,7 +810,7 @@ the page will be white for a second upon loading! 😱
 Now that this is all done, let's finally link in the script into our
 `index.html`.
 
-Underneath your `<p id='hex'>`, right **before** the body closes, insert this:
+Underneath your `<p id="hex">`, right **before** the body closes, insert this:
 
 ```html
 <script type="text/javascript" src="./script.js"></script>
