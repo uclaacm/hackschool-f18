@@ -1,8 +1,8 @@
-var time = document.getElementById("clock");
-var hex = document.getElementById("hex");
-var body = document.getElementById("body");
-var button = document.getElementById("changeColorMode");
-var colorIsBg = true;
+let time = document.getElementById('clock');
+let hex = document.getElementById('hex');
+let body = document.getElementById('body');
+let button = document.getElementById('changeColorMode');
+let colorIsBg = true;
 
 function changeColorMode() {
   colorIsBg = !colorIsBg;
@@ -11,25 +11,25 @@ function changeColorMode() {
 button.onclick = changeColorMode;
 
 function updateClock() {
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  var ampm = "";
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let ampm = '';
 
-  var color = "rgb(" + time2color(hours, minutes, seconds) + ")";
+  let color = 'rgb(' + time2color(hours, minutes, seconds) + ')';
 
   if (hours >= 12) {
-    ampm = "PM";
+    ampm = 'PM';
   } else {
-    ampm = "AM";
+    ampm = 'AM';
   }
 
   if (seconds < 10) {
-    seconds = "0" + seconds;
+    seconds = '0' + seconds;
   }
   if (minutes < 10) {
-    minutes = "0" + minutes;
+    minutes = '0' + minutes;
   }
 
   if (hours != 12) {
@@ -40,16 +40,16 @@ function updateClock() {
     hours = 12;
   }
 
-  time.innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm;
+  time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
 
   hex.innerHTML = color;
 
   if (colorIsBg) {
-    time.style.color = "white";
-    hex.style.color = "white";
+    time.style.color = 'white';
+    hex.style.color = 'white';
     body.style.backgroundColor = color;
   } else {
-    body.style.backgroundColor = "white";
+    body.style.backgroundColor = 'white';
     time.style.color = color;
     hex.style.color = color;
   }
@@ -58,7 +58,7 @@ updateClock();
 setInterval(updateClock, 1000);
 
 function time2color(hours, minutes, seconds) {
-  var result = [];
+  let result = [];
 
   let rawRed = (hours / 24) * 255;
   let roundedRed = Math.round(rawRed);
@@ -72,5 +72,5 @@ function time2color(hours, minutes, seconds) {
   result.push(roundedRed);
   result.push(roundedGreen);
   result.push(roundedBlue);
-  return result.join(",");
+  return result.join(',');
 }

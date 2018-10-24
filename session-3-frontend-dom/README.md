@@ -361,7 +361,7 @@ We need to use the DOM to get the elements we defined in our HTML file. To do
 this, start off with:
 
 ```javascript
-var time = document.getElementById("clock");
+let time = document.getElementById("clock");
 ```
 
 So the `time` variable is where we are going to be setting the current time
@@ -379,9 +379,9 @@ So, define three more variables by accessing the `document` object's
 `getElementById` method.
 
 ```javascript
-var hex = document.getElementById("hex");
-var body = document.getElementById("body");
-var button = document.getElementById("changeColorMode");
+let hex = document.getElementById("hex");
+let body = document.getElementById("body");
+let button = document.getElementById("changeColorMode");
 ```
 
 ### Button Handling
@@ -399,7 +399,7 @@ Lucky for us, there are pretty simple. Add the following into `script.js`
 underneath your existing variables:
 
 ```javascript
-var colorIsBg = true;
+let colorIsBg = true;
 
 function changeColorMode() {
   colorIsBg = !colorIsBg;
@@ -432,11 +432,11 @@ Just like above, we're going to need some variables to help us keep track of the
 time. Define them like so:
 
 ```javascript
-var date = new Date();
-var hours = date.getHours();
-var minutes = date.getMinutes();
-var seconds = date.getSeconds();
-var ampm = "";
+let date = new Date();
+let hours = date.getHours();
+let minutes = date.getMinutes();
+let seconds = date.getSeconds();
+let ampm = '';
 ```
 
 Notice that we use the `Date` object which is built into JavaScript by default.
@@ -450,7 +450,7 @@ calculate the color, or else things will look ugly and we don't want that! Make
 one like this:
 
 ```javascript
-var color = "rgb(" + time2color(hours, minutes, seconds) + ")";
+let color = 'rgb(' + time2color(hours, minutes, seconds) + ')';
 ```
 
 And then **outside** of your existing `updateClock` function, define the
@@ -476,11 +476,11 @@ mentor. But also make sure that your `script.js` file looks like the following
 by now:
 
 ```javascript
-var time = document.getElementById("clock");
-var hex = document.getElementById("hex");
-var body = document.getElementById("body");
-var button = document.getElementById("changeColorMode");
-var colorIsBg = true;
+let time = document.getElementById('clock');
+let hex = document.getElementById('hex');
+let body = document.getElementById('body');
+let button = document.getElementById('changeColorMode');
+let colorIsBg = true;
 
 function changeColorMode() {
   colorIsBg = !colorIsBg;
@@ -489,13 +489,13 @@ function changeColorMode() {
 button.onclick = changeColorMode;
 
 function updateClock() {
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  var ampm = "";
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let ampm = '';
 
-  var color = "rgb(" + time2color(hours, minutes, seconds) + ")";
+  let color = 'rgb(' + time2color(hours, minutes, seconds) + ')';
 }
 
 function time2color(hours, minutes, seconds) {}
@@ -524,7 +524,7 @@ going to be:
 First, define that array I mentioned:
 
 ```javascript
-var result = [];
+let result = [];
 ```
 
 Now, let's calculate red. Red is going to be based on the current hour. Since
@@ -578,7 +578,7 @@ create a string, separating the values with whatever character we give it. (i.e.
 if result was [240, 14, 134], after calling `join` it would be "240, 14, 134").
 
 ```javascript
-return result.join(",");
+return result.join(',');
 ```
 
 Congratulations! 🎉 Your `time2color` function is done! We're almost there.
@@ -587,7 +587,7 @@ But, first, make sure your function in its entirety is this:
 
 ```javascript
 function time2color(hours, minutes, seconds) {
-  var result = [];
+  let result = [];
 
   let rawRed = (hours / 24) * 255;
   let roundedRed = Math.round(rawRed);
@@ -601,7 +601,7 @@ function time2color(hours, minutes, seconds) {
   result.push(roundedRed);
   result.push(roundedGreen);
   result.push(roundedBlue);
-  return result.join(",");
+  return result.join(',');
 }
 ```
 
@@ -618,9 +618,9 @@ The first step is pretty straightforward:
 
 ```javascript
 if (hours >= 12) {
-  ampm = "PM";
+  ampm = 'PM';
 } else {
-  ampm = "AM";
+  ampm = 'AM';
 }
 ```
 
@@ -635,10 +635,10 @@ To handle this, add the following:
 
 ```javascript
 if (seconds < 10) {
-  seconds = "0" + seconds;
+  seconds = '0' + seconds;
 }
 if (minutes < 10) {
-  minutes = "0" + minutes;
+  minutes = '0' + minutes;
 }
 ```
 
@@ -692,7 +692,7 @@ Remember that `time` variable we defined oh-so-long-ago? Well, it's time to
 finally use it! Use all them in fact! ✨🦄✨
 
 ```javascript
-time.innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm;
+time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
 ```
 
 Every DOM object has an `innerHTML` property that allows you to pass it in HTML
@@ -718,11 +718,11 @@ looks like this:
 
 ```javascript
 if (colorIsBg) {
-  time.style.color = "white";
-  hex.style.color = "white";
+  time.style.color = 'white';
+  hex.style.color = 'white';
   body.style.backgroundColor = color;
 } else {
-  body.style.backgroundColor = "white";
+  body.style.backgroundColor = 'white';
   time.style.color = color;
   hex.style.color = color;
 }
@@ -738,25 +738,25 @@ Your `updateClock` function should look like this:
 
 ```javascript
 function updateClock() {
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  var ampm = "";
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let ampm = '';
 
-  var color = "rgb(" + time2color(hours, minutes, seconds) + ")";
+  let color = 'rgb(' + time2color(hours, minutes, seconds) + ')';
 
   if (hours >= 12) {
-    ampm = "PM";
+    ampm = 'PM';
   } else {
-    ampm = "AM";
+    ampm = 'AM';
   }
 
   if (seconds < 10) {
-    seconds = "0" + seconds;
+    seconds = '0' + seconds;
   }
   if (minutes < 10) {
-    minutes = "0" + minutes;
+    minutes = '0' + minutes;
   }
 
   if (hours != 12) {
@@ -767,16 +767,16 @@ function updateClock() {
     hours = 12;
   }
 
-  time.innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm;
+  time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
 
   hex.innerHTML = color;
 
   if (colorIsBg) {
-    time.style.color = "white";
-    hex.style.color = "white";
+    time.style.color = 'white';
+    hex.style.color = 'white';
     body.style.backgroundColor = color;
   } else {
-    body.style.backgroundColor = "white";
+    body.style.backgroundColor = 'white';
     time.style.color = color;
     hex.style.color = color;
   }
