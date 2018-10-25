@@ -33,7 +33,11 @@ us if you have any questions or comments.
     * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-2-intro-to-backend)
 * Week 4:
     - Front-End Track: JavaScript and the DOM
+        * [Slides](http://tinyurl.com/hackschool-f1)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-3-frontend-dom)
     - Back-End Track: What is an API?
+        * [Slides](http://tinyurl.com/hackschool-b1)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-3-backend-api)
 * Week 5:
     - Front-End Track: CSS Layout
     - Back-End Track: More on Express
