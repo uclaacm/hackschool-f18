@@ -28,7 +28,7 @@ img {
 }
 
 .ghost-container {
-	height: 50%;
+	height: 300px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
