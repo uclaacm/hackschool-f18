@@ -3,6 +3,7 @@ const router = express.Router();
 
 const users = new Map();
 
+// POST /user/
 router.post("/", (req, res) => {
   const body = req.body;
   if (users.has(body.name)) {
@@ -16,6 +17,7 @@ router.post("/", (req, res) => {
   res.json({ message: "User created" });
 });
 
+// GET /user/:user
 router.get("/:user", (req, res) => {
   const userObj = users.get(req.params.user);
   if (userObj !== undefined) {
