@@ -40,6 +40,8 @@ us if you have any questions or comments.
         * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-3-backend-api)
 * Week 5:
     - Front-End Track: CSS Layout
+        * [Slides](http://tinyurl.com/hackschool-f2)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-3-frontend-css-layout)
     - Back-End Track: More on Express
 * Week 6:
    - Front-End Track: Introduction to React
