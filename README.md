@@ -41,7 +41,7 @@ us if you have any questions or comments.
 * Week 5:
     - Front-End Track: CSS Layout
         * [Slides](http://tinyurl.com/hackschool-f2)
-        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-3-frontend-css-layout)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-4-frontend-css-layout)
     - Back-End Track: More on Express
 * Week 6:
    - Front-End Track: Introduction to React
