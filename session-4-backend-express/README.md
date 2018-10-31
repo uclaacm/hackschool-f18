@@ -104,34 +104,33 @@ app.use(express.json());
 app.listen(3000);
 ```
 
-Let us now look at how to implement `routes/user.js`.
+### User endpoints
+
+Let us now look at how to implement `routes/user.js`. Let's first think of how we
+would do it if it were an app by itself:
 
 ```js
 const express = require('express');
-const router = new express.Router();
+const app = express();
 
 const users = new Map();
 
-router.post('/', (req, res) => {
-  const name = req.body.name;
-  if (typeof name !== 'string') {
-    res.status(400); // Bad Request
-    res.json({ message: 'A user must have a name' });
-    return;
-  }
+app.use(express.json());
 
-  if (users.has(name)) {
+app.post('/user', (req, res) => {
+  const body = req.body;
+  if (users.has(body.name)) {
     res.status(400); // Bad Request
     res.json({ message: 'User already exists' });
     return;
   }
 
-  users.set(name, { name: name })
+  users.set(body.name, { name: body.name });
   res.status(201); // Created
   res.json({ message: 'User created' });
 });
 
-router.get('/:user', (req, res) => {
+app.get('/user/:user', (req, res) => {
   const user = users.get(req.params.user);
   if (user !== undefined) {
     res.json(user);
@@ -141,5 +140,222 @@ router.get('/:user', (req, res) => {
   }
 });
 
+app.listen(3000);
+```
+
+> A `Map` object is like a dictionary, mapping from one value to another. It is
+> like an object in that it also represents a collection of key-value pairs,
+> but is faster for data storage.
+
+### Introducing `express.Router`
+
+However, we notice that in our case, the `/user` endpoints are not an app by
+themselves. In fact, they are only part of the bigger blog app, and will later
+be `require()`'d by `index.js`.
+
+Express supports this use case through `express.Router()`. By calling that
+function, it creates a "router" object that is functionally similar to the
+`app` object we get by calling `express()`, but the resultant object doesn't
+allow calling `.listen()` on it. This is perfect for our use case, since the
+router would represent part of an app rather than an app in itself, and we
+would only listen on one port rather than many.
+
+We make the following changes, with the red lines that start with `-`
+indicating lines to delete and the green lines starting with `+` indicating
+lines to add in their place.
+
+```diff
+-const app = express();
++const router = express.Router();
+```
+
+```diff
+-app.use(express.json());
+```
+
+This is a tricky one. We know that we will be using the `/user` endpoints from
+`index.js`, and `index.js` already includes this line. That's why we don't need
+this in `routes/user.js` anymore and can delete it.
+
+```diff
+-app.post('/user', (req, res) => {
++router.post('/user', (req, res) => {
+```
+ 
+```diff
+-app.get('/user/:user', (req, res) => {
++router.get('/user/:user', (req, res) => {
+```
+
+```diff
+-app.listen(3000);
++module.exports = router;
+```
+
+Note, instead of running the web app, we are exporting the `router` object we
+created.
+
+### Using user endpoints in the main app
+
+What we will then do in `index.js` is to utilize the `/user` endpoints we wrote
+in `routes/user.js`.
+
+```js
+const express = require('express');
+const userEndpoints = require('./routes/user.js');
+
+const app = express();
+
+app.use(express.json());
+
+app.use(userEndpoints);
+
+app.listen(3000);
+```
+
+### Scoping `/user` endpoints to a specific router
+
+What we now notice is that all endpoints in `routes/user.js` start with
+`/user`, which can seem redundant. Express allows us to remove that redundancy
+by _scoping_ only `/user` requests to that router.
+
+We first change `index.js` to account for this change, by adding another
+argument to `app.use()`:
+
+```diff
+app.use('/user', userEndpoints);
+```
+
+With that done, we can now remove the extraneous `/user` bits from
+`routes/user.js`.
+
+```diff
+-router.post('/user', (req, res) => {
++router.post('/', (req, res) => {
+```
+
+```diff
+-router.get('/user/:user', (req, res) => {
++router.get('/:user', (req, res) => {
+```
+
+----
+
+What we should now have is:
+
+**`index.js`**
+
+```js
+const express = require('express');
+const userEndpoints = require('./routes/user.js');
+
+const app = express();
+
+app.use(express.json());
+
+app.use('/user', userEndpoints);
+
+app.listen(3000);
+```
+
+**`routes/user.js`**
+
+```js
+const express = require('express');
+const router = express.Router();
+
+const users = new Map();
+
+router.post('/', (req, res) => {
+  const body = req.body;
+  if (users.has(body.name)) {
+    res.status(400); // Bad Request
+    res.json({ message: 'User already exists' });
+    return;
+  }
+
+  users.set(body.name, { name: body.name });
+  res.status(201); // Created
+  res.json({ message: 'User created' });
+});
+
+router.get('/:user', (req, res) => {
+  const userObj = users.get(req.params.user);
+  if (userObj !== undefined) {
+    res.json(userObj);
+  } else {
+    res.status(404); // Gives user a 404 Not Found error.
+    res.json({ message: 'User not found' });
+  }
+});
+
 module.exports = router;
+```
+
+### More scopes, more endpoints
+
+With all the `/user` endpoints done, we can now create the `/post` endpoints.
+We create a new file **`routes/post.js`**, and in it we will just copy the
+content from `routes/user.js`, as they are very similar. However, there are a
+few modifications necessary:
+
+1. We will rename all the variables called `user` to instead say `post`.
+
+2. We will also change the key when we use the map to be
+   <code><var>user</var>/<var>post</var></code> rather than just the username,
+   as we want to allow different users to post their own posts with the same
+   name.
+
+3. Finally, we will allow another key in the body for `POST /post/:user`,
+   `content`, which is the content of the post.
+
+We should get something like this:
+
+```js
+const express = require('express');
+const router = express.Router();
+
+const posts = new Map();
+
+// POST /post/:user
+router.post('/:user', (req, res) => {
+  const body = req.body;
+  const key = req.params.user + '/' + body.name;
+
+  if (posts.has(key)) {
+    res.status(400); // Bad Request
+    res.json({ message: 'Post already exists' });
+    return;
+  }
+
+  posts.set(key, {
+    name: body.name,
+    content: body.content
+  });
+  res.status(201); // Created
+  res.json({ message: 'Post created' });
+});
+
+// GET /post/:user/:post
+router.get('/:user/:post', (req, res) => {
+  const postObj = posts.get(req.params.user + '/' + req.params.post);
+  if (postObj !== undefined) {
+    res.json(postObj);
+  } else {
+    res.status(404); // Gives user a 404 Not Found error.
+    res.json({ message: 'Post not found' });
+  }
+});
+
+module.exports = router;
+```
+
+Similarly, we will modify `index.js` to account for the new `/post` endpoints.
+
+```js
+const postEndpoints = require('./routes/post.js');
+
+// ...
+
+app.use('/post', postEndpoints);
 ```
