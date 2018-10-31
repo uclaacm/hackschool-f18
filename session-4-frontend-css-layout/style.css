@@ -1,0 +1,57 @@
+* {
+	margin: 0;
+	padding: 0;
+	/*border: solid 2px red;*/
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background-color: black;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+@keyframes dance {
+	0% {transform: rotate(5deg);}
+	50% {transform: rotate(-5deg);}
+	100% {transform: rotate(5deg);}
+}
+
+img {
+	height: 100px;
+	width: 100px;
+	animation: dance 1s linear infinite;
+}
+
+.ghost-container {
+	height: 50%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex: 0 0 50%;
+}
+
+.down {
+	align-self: flex-end;
+	animation-delay: 0.5s;
+}
+
+.up {
+	align-self: flex-start;
+}
+
+h1 {
+	position: absolute;
+	color: white;
+	font-family: 'Comic Sans MS';
+}
+
+@media (max-width: 1000px) {
+	.ghost-container {
+		flex: 0 0 100%;
+	}
+}
