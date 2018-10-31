@@ -1,0 +1,22 @@
+{
+  "name": "session-4-backend-express",
+  "version": "1.0.0",
+  "description": "**Location**: Covel 227   **Time**: 7:30–8:30pm, October 31, 2018.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uclaacm/hackschool-f18.git"
+  },
+  "author": "UCLA ACM Hack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uclaacm/hackschool-f18/issues"
+  },
+  "homepage": "https://github.com/uclaacm/hackschool-f18#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
