@@ -119,11 +119,11 @@ This is difficult to see, so I'm going to add a border around every element:
 }
 ```
 
-I'm also going to add a border around the container element and make the height 50% of its parent (in this case, the parent is the body element):
+I'm also going to add a border around the container element and make the height 300px.
 ```css
 .ghost-container {
 	border: solid 2px blue;
-	height: 50%;
+	height: 300px;
 }
 ```
 
@@ -135,7 +135,7 @@ To turn a container into a flexbox, you set its `display` property to `flex`.
 ```css
 .ghost-container {
 	border: solid 2px blue;
-	height: 50%;
+	height: 300px;
 	display: flex;
 }
 ```
@@ -144,7 +144,7 @@ A flexbox has a main axis and a cross axis. By default, the main axis is horizon
 ```css
 .ghost-container {
 	border: solid 2px blue;
-	height: 50%;
+	height: 300px;
 	display: flex;
 	flex-direction: column;
 }
@@ -158,7 +158,7 @@ A similar property that moves your items along the cross axis is `align-items`.
 
 ```css
 .ghost-container {
-	height: 50%;
+	height: 300px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -293,7 +293,7 @@ Use the `flex` property to set what percentage of the screen you want the width 
 ```css
 .ghost-container {
 	border: solid 2px blue;
-	height: 50%;
+	height: 300px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -326,7 +326,7 @@ Comment out the borders:
 
 .ghost-container {
 	/* border: solid 2px blue; */
-	height: 50%;
+	height: 300px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
