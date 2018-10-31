@@ -110,15 +110,6 @@ Let's put our ghosts in a container:
 </div>
 ```
 
-This is difficult to see, so I'm going to add a border around every element:
-```css
-* {
-	margin: 0;
-	padding: 0;
-	border: solid 2px red;
-}
-```
-
 I'm also going to add a border around the container element and make the height 300px.
 ```css
 .ghost-container {
@@ -195,59 +186,6 @@ For a complete list of properties and their values, see [CSS-Tricks: A Guide to 
 
 For a fun way to practice, see [Flexbox Froggy](http://flexboxfroggy.com/)
 
-## Making this prettier
-
-This section has nothing to do with flexbox, so you can skip it if you want. I just want to make this a real dance party.
-
-I want to center my heading in my container. How would I do this? Let's try putting the `h1` element inside my container. 
-```html
-<div class="ghost-container">
-	<h1>ghost dance party</h1>
-	<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
-	<img class="up" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
-	<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
-	<img class="up" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
-	<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
-</div>
-```
-
-The `h1` element is positioned relative to the ghosts, so it shows up next to them in a line just like any other flex item. 
-
-To take the `h1` element out of the flow of its siblings, you set the `position` property to `absolute` (by default, `position` is set to `relative`).
-```css
-h1 {
-	position: absolute;
-	color: white;
-	font-family: 'Comic Sans MS';
-}
-```
-
-This is what it should look like:
-![position: absolute;](images/absolute.png)
-
-Notice that the other h1 tag that was inside the body was taken out the normal `display: block;` flow as well. 
-
-To animate the ghosts:
-```css
-@keyframes dance {
-	0% {transform: rotate(5deg);}
-	50% {transform: rotate(-5deg);}
-	100% {transform: rotate(5deg);}
-}
-
-img {
-	height: 100px;
-	width: 100px;
-	animation: dance 1s linear infinite;
-}
-
-.down {
-	align-self: flex-end;
-	animation-delay: 0.5s;
-}
-```
-
-Here I'm creating a dance animation that rotates the ghost back and forth. I set the `down` class to have an animation delay, so ghosts in different rows rotate in opposite directions. 
 
 ## Grid layout
 
@@ -262,7 +200,6 @@ Add a second ghost-container:
 ```html
 <body>
 	<div class="ghost-container">
-		<h1>ghost dance party</h1>
 		<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
 		<img class="up" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
 		<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
@@ -270,7 +207,6 @@ Add a second ghost-container:
 		<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
 	</div>
 	<div class="ghost-container">
-		<h1>ghost dance party</h1>
 		<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
 		<img class="up" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
 		<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
@@ -345,3 +281,57 @@ body {
 ```
 
 Now if you make your screen smaller, the ghosts won't disappear off the edge of the screen. 
+
+## Making this a dance party
+
+This section has nothing to do with flexbox, so you can skip it if you want. I just want to make this a real dance party.
+
+I want to center my heading in my container. How would I do this? Let's try putting the `h1` element inside my container. 
+```html
+<div class="ghost-container">
+	<h1>ghost dance party</h1>
+	<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
+	<img class="up" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
+	<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
+	<img class="up" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
+	<img class="down" src="https://cdn2.iconfinder.com/data/icons/halloween-avatar/260/halloween_avatar-25-512.png">
+</div>
+```
+
+The `h1` element is positioned relative to the ghosts, so it shows up next to them in a line just like any other flex item. 
+
+To take the `h1` element out of the flow of its siblings, you set the `position` property to `absolute` (by default, `position` is set to `relative`).
+```css
+h1 {
+	position: absolute;
+	color: white;
+	font-family: 'Comic Sans MS';
+}
+```
+
+This is what it should look like:
+![position: absolute;](images/absolute.png)
+
+Notice that the other h1 tag that was inside the body was taken out the normal `display: block;` flow as well. 
+
+To animate the ghosts:
+```css
+@keyframes dance {
+	0% {transform: rotate(5deg);}
+	50% {transform: rotate(-5deg);}
+	100% {transform: rotate(5deg);}
+}
+
+img {
+	height: 100px;
+	width: 100px;
+	animation: dance 1s linear infinite;
+}
+
+.down {
+	align-self: flex-end;
+	animation-delay: 0.5s;
+}
+```
+
+Here I'm creating a dance animation that rotates the ghost back and forth. I set the `down` class to have an animation delay, so ghosts in different rows rotate in opposite directions. 
