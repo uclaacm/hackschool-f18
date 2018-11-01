@@ -43,6 +43,8 @@ us if you have any questions or comments.
         * [Slides](http://tinyurl.com/hackschool-f2)
         * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-4-frontend-css-layout)
     - Back-End Track: More on Express
+        * [Slides](tinyurl.com/hackschool-b2)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-4-backend-express)
 * Week 6:
    - Front-End Track: Introduction to React
    - Back-End Track: Making a Web Server Faster
