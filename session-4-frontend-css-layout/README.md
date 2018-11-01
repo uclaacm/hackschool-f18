@@ -302,7 +302,7 @@ h1 {
 }
 ```
 
-This is what it should look like:
+Since we centered everything earlier with flexbox, this is what it should look like:
 ![position: absolute;](images/absolute.png)
 
 To animate the ghosts:
