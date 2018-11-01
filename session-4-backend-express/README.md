@@ -14,6 +14,7 @@
 
 ## What we'll be learning today
 
+* Creating more complex and scalable web applications
 * More on Node.js' `require()`
 * Splitting a web server into several different pieces
 
