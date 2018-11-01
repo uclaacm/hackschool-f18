@@ -151,9 +151,6 @@ A similar property that moves your items along the cross axis is `align-items`.
 }
 ```
 
-Your ghosts should now be perfectly spaced inside the container:
-![justify-content: space-around; and align-items: center;](images/spacearound.png)
-
 We can also set properties of the child flex items. For example, let's use the `align-self` property to put our ghosts in dance formation:
 
 ```css
@@ -294,6 +291,7 @@ I want to center my heading in my container. How would I do this? Let's try putt
 ```
 
 The `h1` element is positioned relative to the ghosts, so it shows up next to them in a line just like any other flex item. 
+![position: relative;](images/relative.png)
 
 To take the `h1` element out of the flow of its siblings, you set the `position` property to `absolute` (by default, `position` is set to `relative`).
 ```css
@@ -306,8 +304,6 @@ h1 {
 
 This is what it should look like:
 ![position: absolute;](images/absolute.png)
-
-Notice that the other h1 tag that was inside the body was taken out the normal `display: block;` flow as well. 
 
 To animate the ghosts:
 ```css
@@ -330,3 +326,7 @@ img {
 ```
 
 Here I'm creating a dance animation that rotates the ghost back and forth. I set the `down` class to have an animation delay, so ghosts in different rows rotate in opposite directions. 
+
+Add another `h1` tag to the other ghost container and we're done!
+
+![done](images/done.png)
