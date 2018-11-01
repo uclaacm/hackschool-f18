@@ -33,7 +33,7 @@ following content. This is to set up the project.
 </head>
 <body>
 	<h1>ghost dance party</h1>
-	<h1>ghost dance party</h1>
+	<h1>dance dance dance</h1>
 </body>
 </html>
 ```
@@ -41,11 +41,6 @@ following content. This is to set up the project.
 Then create a **`style.css`** file containing:
 
 ```css
-* {
-	margin: 0;
-	padding: 0;
-}
-
 html {
 	height: 100%;
 }
