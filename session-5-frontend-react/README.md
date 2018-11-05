@@ -24,19 +24,19 @@ Even the most complex and large web applications are built on simple tags like `
 
 For instance, a typical Facebook post looks like this.
 
-<img src=`images/fbpost.png` width=`500px">
+<img src="images/fbpost.png" width="500px">
 
 All the things in the post are very basic HTML elements. It can possibly be represented like this.
 
 ```html
 <div>
-    <img src=`profile.png`>
+    <img src="profile.png">
     <p> Dustin Newman </p>
     <button> … </button>
 
     <p> switch case case … </p>
 
-    <img src=`meme.png`>
+    <img src="meme.png">
 
     <p>Timothy Gu, Kevin Tan, and 23 others </p>
     <p>1 Comment Seen by 97</p>
@@ -48,7 +48,7 @@ All the things in the post are very basic HTML elements. It can possibly be repr
 ```
 
 
-However, on your Facebook feed, there are always multiple posts. They all inherit a similar structure. There is a user name, user profile picture, time of posting, `like`, `comment", and "share" buttons, etc.
+However, on your Facebook feed, there are always multiple posts. They all inherit a similar structure. There is a user name, user profile picture, time of posting, "like", "comment", and "share" buttons, etc.
 
 
 To code out multiple posts, we would have to copy and paste. There is repeated code. We don't like that.
@@ -532,16 +532,5 @@ There you have it. A working twitter.
 
 Does this look good? Not at all. It needs some serious styling. But due to limited time. We cannot teach you how to style in React.
 However, __CSS stills works in React__. Please look it up online and try to apply CSS to React.
-
-
-## Questions
-
-What is the difference between `require` and `import`?
-
-What is the difference between __object__ and __class__?
-
-Why do we use `this.setState` to change state instead of just assigning a new object to `this.state`?
-
-Why pass in a function that calls `incrementLike` instead of passing `incrementLike` directly to `onClick`?
 
 
