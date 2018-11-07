@@ -143,7 +143,7 @@ More common, you can also put the function in .then() without naming it.
 ```js
 promise.then((successMessage) => {
   console.log(successMessage);
-}, (failureMessage) => {
+}.catch((failureMessage) => {
   console.log(failureMessage);
 });
 ```
@@ -196,7 +196,8 @@ f().then((result) => {
 ```
 
 You use `await` before a promise. This keeps the JavaScript from continuing to execute until the promise is resolved, but the CPU can still do other jobs. 
-Important! You can only use `await` inside of an `async function`.
+
+**Important!** You can only use `await` inside of an `async function`.
 
 ```js
 async function f() {
@@ -269,4 +270,60 @@ const message = await boilWater();
 console.log(message);
 ```
 
+## Finally! Let's make a request to a server
 
+We're going to use the npm module node-fetch to do this.
+First navigate to your folder using `cd`.
+Then create a package.json with the command:
+```shell
+npm init
+```
+Hit enter for all the default values.
+
+Then install the node-fetch library:
+```shell
+npm install node-fetch --save
+```
+
+In a new file:
+```js
+const fetch = require('node-fetch');
+
+async function getJokeFromServer() {
+  const res = await fetch('http://api.icndb.com/jokes/random');
+  return res.json();
+}
+
+async function main() {
+  const jsonFromServer = await getJokeFromServer();
+  // Uncomment the following lines if you want to see the json data you got from the server
+  // console.log('This is from the server:');
+  // console.log(jsonFromServer);
+  console.log(jsonFromServer.value.joke);
+}
+
+main();
+```
+
+`fetch` returns a promise that is resolved when the first piece of data comes back from the server. It takes in the URL of the data you want to access. (If you came to our previous backend sessions, we made requests to servers using Postman. We are doing the exact same thing here inside Node.)
+
+`res.json()` returns a promise that is resolved to the json data from the server.
+
+What if we want to ask for many jokes at the same time?
+```js
+async function main() {
+  const allPromises = [];
+  for (let i = 0; i < 5; i++) {
+    allPromises.push(getJokeFromServer());
+  }
+  const allJokes = await Promise.all(allPromises);
+  for (const jsonFromServer of allJokes) {
+    console.log(jsonFromServer.value.joke);
+  }
+}
+```
+
+Neat!
+```
+When Chuck Norris falls in water, Chuck Norris doesn't get wet. Water gets Chuck Norris.
+```
