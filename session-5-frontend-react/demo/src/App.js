@@ -6,64 +6,73 @@ class Tweet extends React.Component {
     this.state = {
       numLike: 0
     };
+    this.buttonOnClick = () => { this.incrementLike(); };
   }
 
   incrementLike() {
-    let previousLike = this.state.numLike;
-    let newState = {
-        numLike: previousLike + 1
-    }
+    const previousLike = this.state.numLike;
+    const newState = {
+      numLike: previousLike + 1
+    };
     this.setState(newState);
   }
 
   render() {
-    let numLike = this.state.numLike;
+    const numLike = this.state.numLike;
     return (
-    <div>
-      <h2> {this.props.tweet} </h2>
-      <button onClick={() => this.incrementLike()}>❤️ {numLike} </button>
-    </div>
+      <div>
+        <h2>{this.props.tweet}</h2>
+        <button onClick={this.buttonOnClick}>Like {numLike}</button>
+      </div>
     );
   }
 }
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       tweets: [],
-      currTweet: ""
-    }
+      currTweet: ''
+    };
+    this.tweetIndex = 0;
+    this.inputOnChange = (e) => { this.updateCurrTweet(e); };
+    this.buttonOnClick = () => { this.addTweet(); };
   }
+
   updateCurrTweet(event) {
-    let tweets = this.state.tweets;
-    let newState = {
-        tweets: tweets,
-        currTweet: event.target.value
+    const newState = {
+      currTweet: event.target.value
     };
     this.setState(newState);
   }
 
   addTweet() {
-    let prevTweets = this.state.tweets;
-    if (this.state.currTweet === "") {
-      alert("Input something first");
+    const prevTweets = this.state.tweets;
+    if (this.state.currTweet === '') {
+      alert('Input something first');
       return;
     }
-    prevTweets.push(this.state.currTweet);
-    let newState = {
-      tweets: prevTweets,
-      currTweet: ""
-    }
+    const currTweetObj = {
+      index: this.tweetIndex,
+      content: this.state.currTweet
+    };
+    this.tweetIndex += 1;
+
+    const newTweets = [currTweetObj, ...prevTweets];
+    const newState = {
+      tweets: newTweets,
+      currTweet: ''
+    };
     this.setState(newState);
   }
   render() {
     const tweets = this.state.tweets;
-    const lists = tweets.map((text) => <Tweet tweet={text} />);
+    const lists = tweets.map((tweetObj) => <Tweet tweet={tweetObj.content} key={tweetObj.index} />);
     return (
       <div>
-        <input value={this.state.currTweet} onChange={(e) => this.updateCurrTweet(e)}/>
-        <button onClick={() => this.addTweet()}> tweet </button>
+        <input value={this.state.currTweet} onChange={this.inputOnChange}/>
+        <button onClick={this.buttonOnClick}>tweet</button>
         {lists}
       </div>
     );
