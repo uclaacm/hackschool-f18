@@ -22,7 +22,9 @@ class Tweet extends React.Component {
     return (
       <div>
         <h2>{this.props.tweet}</h2>
-        <button onClick={this.buttonOnClick}>Like {numLike}</button>
+        <button onClick={this.buttonOnClick}>
+          <span role="img" aria-label="Love">❤️</span> {numLike}
+        </button>
       </div>
     );
   }

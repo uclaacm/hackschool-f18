@@ -7,7 +7,7 @@
 ## Resources
 
 **Slides**
-* [Session 5 Frontend: CSS Layout](TODO)
+* [Session 5 Frontend: React](TODO)
 
 **ACM Membership Attendance Portal**
 * [Portal](https://members.uclaacm.com/login)
@@ -71,7 +71,7 @@ What if we can define a complex html tag? A tag that can encapsulate the structu
 />
 ```
 
-That is exactly what React enables you to do. You can define your own HTML tags. These are called **components**.
+That is exactly what React enables you to do. You can define your own HTML-like tags that can be accessed through JavaScript. These are called **components**.
 
 Once you define a component, you can easily reuse it.
 
@@ -395,7 +395,7 @@ We reuse the component `Tweet` without worrying the structure inside `Tweet`.
 
 
 Another important concept in React is __state__.
-Let's add a counter next in the button.
+Let's add a counter next to the button.
 
 ```jsx
 class Tweet extends React.Component {
@@ -407,12 +407,12 @@ class Tweet extends React.Component {
   }
 
   render() {
-    let numLike = 0;
+    const numLike = this.state.numLike;
     return (
-    <div>
-      <h2> {this.props.tweet} </h2>
-      <button>❤️ {numLike} </button>
-    </div>
+      <div>
+        <h2>{this.props.tweet}</h2>
+        <button>❤️ {numLike}</button>
+      </div>
     );
   }
 }
@@ -421,12 +421,12 @@ In `constructor`, we set a variable `state` to hold an object with a key `numLik
 
 We accessed the state using `this.state` in `render`.
 
-We want to increment the `this.state.numLike` everytime we click the button. Let's define a function to do that.
-
 What is `super()`? 
 To understand this, you will have to know what __inheritance__ is in 
 [Object Oriented Programming](https://searchmicroservices.techtarget.com/definition/object-oriented-programming-OOP).
 It initializes the parent class `React.Component`.
+
+We want to increment the `this.state.numLike` everytime we click the button. Let's define a function to do that.
 
 
 ```jsx
@@ -436,23 +436,24 @@ class Tweet extends React.Component {
     this.state = {
       numLike: 0
     };
+    this.buttonOnClick = () => { this.incrementLike(); };
   }
 
   incrementLike() {
-    let previousLike = this.state.numLike;
-    let newState = {
+    const previousLike = this.state.numLike;
+    const newState = {
         numLike: previousLike + 1
-    }
+    };
     this.setState(newState);
   }
 
   render() {
-    let numLike = 0;
+    const numLike = this.state.numLike;
     return (
-    <div>
-      <h2> {this.props.tweet} </h2>
-      <button onClick={() => this.incrementLike()}>❤️ {numLike} </button>
-    </div>
+      <div>
+        <h2>{this.props.tweet}</h2>
+        <button onClick={this.buttonOnClick}>❤️ {numLike} </button>
+      </div>
     );
   }
 }
@@ -460,15 +461,19 @@ class Tweet extends React.Component {
 There are 3 things that we changed.
 1. We defined the `incrementLike` function. 
 Instead of directly assigning a new object to `this.state`, 
-we used a function `this.setState` to help us set state.
+2. we used a function `this.setState` to help us set state.
 
-2. We set the `onClick` attributes to a function `() => this.incrementLike()` 
+3. We set the `onClick` attributes to a function `this.buttonOnclick`.
+The function is being defined in the constructor `() => { this.incrementLike(); }`
 This means whenever the button is clicked. It will call a function which calls `incrementLike`.
 
 
 Save and check your page. Now your like button should work.
 
-Let's add an input box so you can add new tweet from your app.
+At this point, you might have noticed that React has been yelling at us all the time for some warning like .
+
+
+Let's add an input box so you can add new tweet from your app
 
 
 ```jsx
@@ -477,40 +482,46 @@ class App extends Component {
     super();
     this.state = {
       tweets: [],
-      currTweet: "",
-    }
+      currTweet: ''
+    };
+    this.tweetIndex = 0;
+    this.inputOnChange = (e) => { this.updateCurrTweet(e); };
+    this.buttonOnClick = () => { this.addTweet(); };
   }
 
   updateCurrTweet(event) {
-    let tweets = this.state.tweets;
-    let newState = {
-        tweets: tweets,
-        currTweet: event.target.value
+    const newState = {
+      currTweet: event.target.value
     };
     this.setState(newState);
   }
 
   addTweet() {
-    let prevTweets = this.state.tweets;
-    if (this.state.currTweet === "") {
-      alert("Input something first");
+    const prevTweets = this.state.tweets;
+    if (this.state.currTweet === '') {
+      alert('Input something first');
       return;
     }
-    prevTweets.push(this.state.currTweet);
-    let newState = {
-      tweets: prevTweets,
-      currTweet: ""
-    }
+    const currTweetObj = {
+      index: this.tweetIndex,
+      content: this.state.currTweet
+    };
+    this.tweetIndex += 1;
+
+    const newTweets = [currTweetObj, ...prevTweets];
+    const newState = {
+      tweets: newTweets,
+      currTweet: ''
+    };
     this.setState(newState);
   }
-
   render() {
     const tweets = this.state.tweets;
-    const lists = tweets.map((text) => <Tweet tweet={text} />);
+    const lists = tweets.map((tweetObj) => <Tweet tweet={tweetObj.content} key={tweetObj.index} />);
     return (
       <div>
-      <input value={this.state.currTweet} onChange={(e) => this.updateCurrTweet(e)}/>
-      <button onClick={() => this.addTweet()}> tweet </button>
+        <input value={this.state.currTweet} onChange={this.inputOnChange}/>
+        <button onClick={this.buttonOnClick}>tweet</button>
         {lists}
       </div>
     );
