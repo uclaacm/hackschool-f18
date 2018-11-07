@@ -50,7 +50,6 @@ class App extends Component {
   }
 
   addTweet() {
-    const prevTweets = this.state.tweets;
     if (this.state.currTweet === '') {
       alert('Input something first');
       return;
@@ -61,6 +60,7 @@ class App extends Component {
     };
     this.tweetIndex += 1;
 
+    const prevTweets = this.state.tweets;
     const newTweets = [currTweetObj, ...prevTweets];
     const newState = {
       tweets: newTweets,
