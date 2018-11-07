@@ -47,7 +47,11 @@ us if you have any questions or comments.
         * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-4-backend-express)
 * Week 6:
    - Front-End Track: Introduction to React
+        * [Slides](http://tinyurl.com/hackschool-f3)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-5-frontend-react)
    - Back-End Track: Making a Web Server Faster
+        * [Slides](http//tinyurl.com/hackschool-b3)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-5-backend-async)
 * Week 7:
    - Front-End Track: Dynamic Content
    - Back-End Track: Databases

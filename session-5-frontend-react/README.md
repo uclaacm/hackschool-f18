@@ -7,7 +7,7 @@
 ## Resources
 
 **Slides**
-* [Session 5 Frontend: React](TODO)
+* [Session 5 Frontend: React](http://tinyurl.com/hackschool-f3)
 
 **ACM Membership Attendance Portal**
 * [Portal](https://members.uclaacm.com/login)
