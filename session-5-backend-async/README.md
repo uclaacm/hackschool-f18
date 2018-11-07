@@ -29,10 +29,10 @@ So first you have to boil the water. Let's say this takes 3 seconds:
 
 ```js
 function boilWater() {
-	console.log('Start boiling!');
-	const start = Date.now();
-	while (Date.now() < start + 3000) {}
-	console.log('Water boiled!');
+  console.log('Start boiling!');
+  const start = Date.now();
+  while (Date.now() < start + 3000) {}
+  console.log('Water boiled!');
 }
 ```
 
@@ -46,10 +46,10 @@ And then let's say you can wash your veggies in 2 seconds:
 
 ```js
 function washVeggies() {
-	console.log('Start washing!');
-	const start = Date.now();
-	while (Date.now() < start + 2000) {}
-	console.log('Veggies washed!');
+  console.log('Start washing!');
+  const start = Date.now();
+  while (Date.now() < start + 2000) {}
+  console.log('Veggies washed!');
 }
 ```
 
@@ -57,11 +57,11 @@ And let's write functions to add our pasta and veggies:
 
 ```js
 function addPasta() {
-	console.log('Pasta in da wata~');
+  console.log('Pasta in da wata~');
 }
 
 function addVeggies() {
-	console.log('Veggies in da pan~');
+  console.log('Veggies in da pan~');
 }
 ```
 
@@ -81,14 +81,16 @@ No! Because that's stupid, and as engineers and cooks, we're all about efficienc
 
 What we want to do is start boiling the water, and while the water is boiling, we start washing the veggies.
 
-This is what asynchronous code is for. Using a function called `setTimeout`, let's try to wash the veggies while the water is boiling.
+This is what **asynchronous code** is for. Using a function called `setTimeout`, let's try to wash the veggies while the water is boiling.
 
+```js
 function boilWater() {
-	console.log('Start boiling!');
-	setTimeout(() => {
-    	console.log('Water boiled!');
-  	}, 3000);
+  console.log('Start boiling!');
+  setTimeout(() => {
+    console.log('Water boiled!');
+  }, 3000);
 }
+```
 
 `setTimeout` takes two arguments, a function and a number of milliseconds. Unlike the implementation we had before, your computer will not hang while we're waiting for the water to boil. Your computer is free to do other things. After 3000 milliseconds, the function that we passed into setTimeout will be called. Note that when we pass in a function like this, the function is called a "callback". 
 
@@ -117,22 +119,22 @@ The key point here is that promises offer a way to guarantee that data will be t
 
 ```js
 const promise = new Promise((resolve, reject) => {
-	if (1 < 2) {
-		resolve('Success!');
-	}
-	else {
-		reject('Failed :(');
-	}
+  if (1 < 2) {
+    resolve('Success!');
+  }
+  else {
+    reject(new Error('Failed :('));
+  }
 });
 
 const doOnSuccess = (successMessage) => {
-	console.log(successMessage);
+  console.log(successMessage);
 };
 const doOnFailure = (failureMessage) => {
-	console.log(failureMessage);
+  console.log(failureMessage);
 }; 
 
-promise.then(doOnSuccess, doOnFailure);
+promise.then(doOnSuccess).catch(doOnFailure);
 ```
 When you create a new `Promise`, you pass in a function. This function has two parameters, usually named `resolve` and `reject`. You call `resolve` when you want to return a value. In this case, we call `resolve` when the condition `1 < 2` is true (this is always true). 
 `resolve` takes one parameter, which is the value you want to return. 
@@ -140,26 +142,26 @@ When you create a new `Promise`, you pass in a function. This function has two p
 More common, you can also put the function in .then() without naming it.
 ```js
 promise.then((successMessage) => {
-	console.log(successMessage);
+  console.log(successMessage);
 }, (failureMessage) => {
-	console.log(failureMessage);
+  console.log(failureMessage);
 });
 ```
 
 Let's apply this to the pasta problem:
 ```js
 function boilWater() {
-	console.log('Start boiling!');
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-	    	console.log('Water boiled!');
-	    	resolve();
-	  	}, 3000);
-	});
+  console.log('Start boiling!');
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Water boiled!');
+      resolve();
+    }, 3000);
+  });
 }
 
 boilWater().then(() => {
-	addPasta();
+  addPasta();
 });
 ```
 
@@ -188,7 +190,9 @@ async function f() {
   return 1;
 }
 
-f().then((result) => console.log(result))); // 1
+f().then((result) => {
+  console.log(result); // should log 1
+});
 ```
 
 You use `await` before a promise. This keeps the JavaScript from continuing to execute until the promise is resolved, but the CPU can still do other jobs. 
@@ -212,10 +216,10 @@ This is another way to call the pasta functions so that we will add the pasta af
 
 ```js
 async function main() {
-	await boilWater();
-	addPasta();
-	await washVeggies();
-	addVeggies();
+  await boilWater();
+  addPasta();
+  await washVeggies();
+  addVeggies();
 }
 
 main();
@@ -226,37 +230,37 @@ How can we run boilWater and washVeggies in parallel?
 We can push the two returned promises onto an array and then use `Promise.all()`:
 ```js
 async function main() {
-	const allPromises = [];
-	allPromises.push(boilWater());
-	allPromises.push(washVeggies());
-	await Promise.all(allPromises);
-	addPasta();
-	addVeggies();
+  const allPromises = [];
+  allPromises.push(boilWater());
+  allPromises.push(washVeggies());
+  await Promise.all(allPromises);
+  addPasta();
+  addVeggies();
 }
 ```
 
 Let's boil 5 pots of water at a time!
 ```js
 async function main() {
-	const allPromises = [];
-	for (let i = 0; i < 5; i++) {
-		allPromises.push(boilWater());
-	}
-	await Promise.all(allPromises);
-	console.log('Done!')
+  const allPromises = [];
+  for (let i = 0; i < 5; i++) {
+    allPromises.push(boilWater());
+  }
+  await Promise.all(allPromises);
+  console.log('Done!')
 }
 ```
 
 Another important thing to note about promises is that they can resolve into values. This value can be a string, number, object, etc... Let's have the `Promise` returned by `boilWater` return a success message:
 ```js
 function boilWater() {
-	console.log('Start boiling!');
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-	    	console.log('Water boiled!');
-	    	resolve('Success!');
-	  	}, 3000);
-	});
+  console.log('Start boiling!');
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('Water boiled!');
+      resolve('Success!');
+    }, 3000);
+  });
 }
 ```
 To access this message, save the return result of boilWater() to a variable:
@@ -264,3 +268,5 @@ To access this message, save the return result of boilWater() to a variable:
 const message = await boilWater();
 console.log(message);
 ```
+
+
