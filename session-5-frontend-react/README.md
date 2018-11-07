@@ -7,7 +7,7 @@
 ## Resources
 
 **Slides**
-* [Session 5 Frontend: CSS Layout](TODO)
+* [Session 5 Frontend: React](TODO)
 
 **ACM Membership Attendance Portal**
 * [Portal](https://members.uclaacm.com/login)
@@ -60,38 +60,38 @@ What if we can define a complex html tag? A tag that can encapsulate the structu
 ```html
 <!-- Imagine a complex tags that looks like this -->
 <MyPostTag 
-	profile=`profile.png`
-	name=`Dustin Newman`
-	date=`October 15 at 10:00AM`
-	text=`switch case case case...`
-	image=`meme.png`
-	reax=`Timothy Gu, Kevin Tan and 23 others`
-	comments=`1 Comment`
-	seen=`Seen by 97`
+	profile="profile.png"
+	name="Dustin Newman"
+	date="October 15 at 10:00AM"
+	text="switch case case case..."
+	image="meme.png"
+	reax="Timothy Gu, Kevin Tan and 23 others"
+	comments="1 Comment"
+	seen="Seen by 97"
 />
 ```
 
-That is exactly what React enables you to do. You can define your own HTML tags. These are called **components**.
+That is exactly what React enables you to do. You can define your own HTML-like tags that can be accessed through JavaScript. These are called **components**.
 
 Once you define a component, you can easily reuse it.
 
 ```html
 <!-- First Post -->
 <MyPostTag 
-	profile=`profile1.png`
-	name=`Galen`
-	date=`November 7 at 10:00AM`
-	text=`I love react`
-	reax=`Timothy Gu, Kevin Tan and 23 others`
-	comments=`1 Comment`
-	seen=`Seen by 97`
+	profile="profile1.png"
+	name="Galen"
+	date="November 7 at 10:00AM"
+	text="I love react"
+	reax="Timothy Gu, Kevin Tan and 23 others"
+	comments="1 Comment"
+	seen="Seen by 97"
 />
 <!-- Second Post -->
 <MyPostTag 
-	profile=`profile2.png`
-	name=`Tim`
-	date=`November 7 at 6:00PM`
-	text=`I love react`
+	profile="profile2.png"
+	name="Tim"
+	date="November 7 at 6:00PM"
+	text="I love react"
 />
 ```
 
@@ -108,50 +108,50 @@ class Person {
     }
     
     sayHello() {
-        console.log(`Hi, my name is ` + this.name);
+        console.log('Hi, my name is ' + this.name);
     }
 
     changeAge(newAge) {
         this.age = newAge;
-        console.log(this.name + ` is now ` + this.age + ` yo.")
+        console.log(this.name + ' is now ' + this.age + ' yo.')
     }
 }
 ```
 
-* The `constructor` function is a function called when we create a new *instant* of a class.
-* `constructor` usually defines the variables within the class too.
-* `this.name` and `this.age` are both variables in the class `Person` 
-* `sayHello` and `changeAge` are both function within the class
-* The `this` keyword specifies that it is refering to itself.
+* The `constructor` function is a function called when we create a new *instance* of a class. An instance is an object based on the format of the class definition.
+* `constructor` usually defines the proterties of instance within the class too.
+* `this.name` and `this.age` are both properties in both instances of class `Person` 
+* `sayHello` and `changeAge` are both function within the instances. 
+* The `this` keyword specifies that it is referring to itself, the instance of the class.
 
 
 ### Use a class
 ```js
 // Inside a JavaScript Interactive Environment 
 // (e.g. Chrome DevTools)
-let me = new Person(`Galen`, 18);
+let me = new Person("Galen", 18);
 me
-// Output: Person {name: `Galen`, age: 18}
+// Output: Person {name: "Galen", age: 18}
 me.sayHello();
 // Output: Hi, my name is Galen.
 me.changeAge(19);
 // Output: Galen is now 19 yo.
 me
-// Output: Person {name: `Galen`, age: 19} 
-let berg = new Person(`berg`, 105);
+// Output: Person {name: "Galen", age: 19} 
+let berg = new Person("berg", 105);
 berg
-// Output: Person {name: `berg`, age: 105}
+// Output: Person {name: "berg", age: 105}
 me
-// Output: Person {name: `berg`, age: 19}
+// Output: Person {name: "berg", age: 19}
 berg.changeAge(100);
 berg
-// Output: Person {name: `berg`, age: 100}
+// Output: Person {name: "berg", age: 100}
 me
-// Output: Person {name: `berg`, age: 19}
+// Output: Person {name: "berg", age: 19}
 ```
 Changing the age of `berg` will not change the age of `me`.
 
-We can see that the `this` keyword specifies which person's age we are changing, namely the "current object/instant" itself.
+We can see that the `this` keyword specifies which person's age we are changing, namely the "current object/instance" itself.
 
 
 ## Set up React
@@ -222,7 +222,13 @@ class App extends Component {
   }
 }
 ```
-The syntax is extremely weird. It is a mix of JavaScript and HTML. This syntax is __JSX__. It is made to make writing React easier.
+The syntax is extremely weird. 
+It looks like a mix of JavaScript and HTML. 
+This syntax is called __JSX__, which is JavaScript-XML.
+XML is kind of similar to HTML but slightly different. See [here](http://courses.cs.vt.edu/~cs1204/XML/htmlVxml.html).
+JSX is made to make writing React easier.
+
+However, __JSX is not JavaScript__. You cannot execute or write JSX in your browser. It is only allowed in React.
 
 `App` is a complex React component containing multiple simple HTML tags.
 
@@ -393,9 +399,10 @@ It returns a `Tweet` component with `tweet` set to `text`.
 This was the __reuse__ part of React. 
 We reuse the component `Tweet` without worrying the structure inside `Tweet`.
 
+### State
 
 Another important concept in React is __state__.
-Let's add a counter next in the button.
+Let's add a counter next to the button.
 
 ```jsx
 class Tweet extends React.Component {
@@ -407,12 +414,12 @@ class Tweet extends React.Component {
   }
 
   render() {
-    let numLike = 0;
+    const numLike = this.state.numLike;
     return (
-    <div>
-      <h2> {this.props.tweet} </h2>
-      <button>❤️ {numLike} </button>
-    </div>
+      <div>
+        <h2>{this.props.tweet}</h2>
+        <button>❤️ {numLike}</button>
+      </div>
     );
   }
 }
@@ -421,12 +428,12 @@ In `constructor`, we set a variable `state` to hold an object with a key `numLik
 
 We accessed the state using `this.state` in `render`.
 
-We want to increment the `this.state.numLike` everytime we click the button. Let's define a function to do that.
-
 What is `super()`? 
 To understand this, you will have to know what __inheritance__ is in 
 [Object Oriented Programming](https://searchmicroservices.techtarget.com/definition/object-oriented-programming-OOP).
 It initializes the parent class `React.Component`.
+
+We want to increment the `this.state.numLike` everytime we click the button. Let's define a function to do that.
 
 
 ```jsx
@@ -436,23 +443,24 @@ class Tweet extends React.Component {
     this.state = {
       numLike: 0
     };
+    this.buttonOnClick = () => { this.incrementLike(); };
   }
 
   incrementLike() {
-    let previousLike = this.state.numLike;
-    let newState = {
+    const previousLike = this.state.numLike;
+    const newState = {
         numLike: previousLike + 1
-    }
+    };
     this.setState(newState);
   }
 
   render() {
-    let numLike = 0;
+    const numLike = this.state.numLike;
     return (
-    <div>
-      <h2> {this.props.tweet} </h2>
-      <button onClick={() => this.incrementLike()}>❤️ {numLike} </button>
-    </div>
+      <div>
+        <h2>{this.props.tweet}</h2>
+        <button onClick={this.buttonOnClick}>❤️ {numLike} </button>
+      </div>
     );
   }
 }
@@ -460,16 +468,56 @@ class Tweet extends React.Component {
 There are 3 things that we changed.
 1. We defined the `incrementLike` function. 
 Instead of directly assigning a new object to `this.state`, 
-we used a function `this.setState` to help us set state.
+2. we used a function `this.setState` to help us set state.
 
-2. We set the `onClick` attributes to a function `() => this.incrementLike()` 
+3. We set the `onClick` attributes to a function `this.buttonOnclick`.
+The function is being defined in the constructor `() => { this.incrementLike(); }`
 This means whenever the button is clicked. It will call a function which calls `incrementLike`.
-
 
 Save and check your page. Now your like button should work.
 
-Let's add an input box so you can add new tweet from your app.
 
+### Accessibility in React
+At this point, you might have noticed that React has been yelling at us all the time for some warning like
+```
+Line 24:  Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby
+```
+telling us we should wrap our emoji in a `span` tag. 
+
+The reason for doing this is for accessibility. 
+
+>To a person using a screenreader, however, he/she may not be aware that this content is there at all. By wrapping the emoji in a <span>, giving it the role="img", and providing a useful description in aria-label, the screenreader will treat the emoji as an image in the accessibility tree with an accessible name for the end user.
+
+src: [accesible-emoji](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/accessible-emoji.md)
+
+Let's go ahead and make it more user-friendly!
+
+```jsx
+render() {
+  const numLike = this.state.numLike;
+  return (
+    <div>
+      <h2>{this.props.tweet}</h2>
+      <button onClick={this.buttonOnClick}>
+        <span role="img" aria-label="Love">❤️</span> {numLike}
+      </button>
+    </div>
+  );
+}
+```
+
+You might also wonder why we are keeping data in `state`?
+Can we instead just keep `numLike` in the class like `this.numLike` instead of `this.state.numLike`?
+`this.state` is a specially reserved class variable in a React component. 
+It is responsible to keep track of the data that we display on the webpage. 
+And we are using `setState` to update it so that React knows the data on the page changed so it needs to call `render` again. 
+
+**`state` is a super duper important concept in React.** 
+Make sure you understand it well. 
+
+
+### Input and State
+Let's add an input box so you can add new tweet from your app
 
 ```jsx
 class App extends Component {
@@ -477,40 +525,46 @@ class App extends Component {
     super();
     this.state = {
       tweets: [],
-      currTweet: "",
-    }
+      currTweet: ''
+    };
+    this.tweetIndex = 0;
+    this.inputOnChange = (e) => { this.updateCurrTweet(e); };
+    this.buttonOnClick = () => { this.addTweet(); };
   }
 
   updateCurrTweet(event) {
-    let tweets = this.state.tweets;
-    let newState = {
-        tweets: tweets,
-        currTweet: event.target.value
+    const newState = {
+      currTweet: event.target.value
     };
     this.setState(newState);
   }
 
   addTweet() {
-    let prevTweets = this.state.tweets;
-    if (this.state.currTweet === "") {
-      alert("Input something first");
+    if (this.state.currTweet === '') {
+      alert('Input something first');
       return;
     }
-    prevTweets.push(this.state.currTweet);
-    let newState = {
-      tweets: prevTweets,
-      currTweet: ""
-    }
+    const currTweetObj = {
+      index: this.tweetIndex,
+      content: this.state.currTweet
+    };
+    this.tweetIndex += 1;
+
+    const prevTweets = this.state.tweets;
+    const newTweets = [currTweetObj, ...prevTweets];
+    const newState = {
+      tweets: newTweets,
+      currTweet: ''
+    };
     this.setState(newState);
   }
-
   render() {
     const tweets = this.state.tweets;
-    const lists = tweets.map((text) => <Tweet tweet={text} />);
+    const lists = tweets.map((tweetObj) => <Tweet tweet={tweetObj.content} key={tweetObj.index} />);
     return (
       <div>
-      <input value={this.state.currTweet} onChange={(e) => this.updateCurrTweet(e)}/>
-      <button onClick={() => this.addTweet()}> tweet </button>
+        <input value={this.state.currTweet} onChange={this.inputOnChange}/>
+        <button onClick={this.buttonOnClick}>tweet</button>
         {lists}
       </div>
     );
@@ -523,14 +577,29 @@ Everytime we type in the input box, it calls the function and passes in an "even
 We can access the value of the event's target, which is the input box. 
 We take that value and put that in the state in `updateCurrTweet`. 
 
-Notice how we set the `value` attribute of the input tag to `this.state.currTweet`. It means whatever is in `currTweet` will be displayed in the input ox.
+Notice how we set the `value` attribute of the input tag to `this.state.currTweet`. It means whatever is in `currTweet` will be displayed in the input box.
 
 Now, we examine the `addTweet` function. 
-It pushes `currTweet` to the `this.state.tweets` array and update the state.
+
+We represent each tweet as an object with a number `index` and the content of the tweet `content`. 
+
+It pushes a new tweet to the beginning of `this.state.tweets` array and update the state.
+
+The strange operator `...` is to expand/_spread_ an array. 
+What does it mean? 
+Since `prevTweets` is an array, we expand it inside `[ ]` for JavaScript to know that we are trying to take all elements in the `prevTweets` and put it after `currTweetObj`.
+
+Why do we use an object to represent a tweet then? 
+Shouldn't a string itself be enough?
+Why are we keeping an index?
+We see that we pass the index to an attirbute `key` in `Tweet`. 
+This is neccessary so that React can distinguish element from each other. 
+
 
 There you have it. A working twitter.
 
 Does this look good? Not at all. It needs some serious styling. But due to limited time. We cannot teach you how to style in React.
 However, __CSS stills works in React__. Please look it up online and try to apply CSS to React.
 
+Maybe you can start [here](https://reactjs.org/docs/faq-styling.html#how-do-i-add-css-classes-to-components) and [there](https://codeburst.io/4-four-ways-to-style-react-components-ac6f323da822).
 
