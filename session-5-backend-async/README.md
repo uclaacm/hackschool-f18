@@ -330,7 +330,7 @@ When Chuck Norris falls in water, Chuck Norris doesn't get wet. Water gets Chuck
 
 ## With Express
 
-Remember in previous sessions, we used Express to serve data. Let's serve some data from the Internet Chuck Norris Database!
+Remember in previous sessions, we used Express to serve data. Let's serve some data from the Internet Chuck Norris Database! In the future, we'll be serving data from our own database. 
 
 Install Express:
 ```shell
