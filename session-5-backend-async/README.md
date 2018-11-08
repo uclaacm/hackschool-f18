@@ -336,6 +336,8 @@ Install Express:
 ```shell
 npm install express --save
 ```
+
+In a new file called `index.js`:
 ```js
 const fetch = require('node-fetch');
 const express = require('express');
@@ -353,4 +355,9 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(3000);
+```
+
+To start your server from the command line:
+```shell
+node ./index.js
 ```
