@@ -10,7 +10,7 @@ async function getJokeFromServer() {
 app.get('/', async (req, res) => {
 	const jsonFromServer = await getJokeFromServer();
 	const joke = jsonFromServer.value.joke;
-	res.send(joke);
+	res.end(joke);
 });
 
 app.listen(3000);
