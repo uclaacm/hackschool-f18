@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Quicksand');
+
+.blog-head{
+    color: white;
+    height: 35vh;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 100px #d5d5d5;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.blog-post{
+    margin: 30px 10px;
+}
+
+.blog-head:hover{
+    box-shadow: none;
+}
+
+.delete-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 20px;
+    height: 16px;
+}
+
+.delete-btn{
+    background-color: transparent;
+    border: none;
+    color: #888888;
+}
+
+.delete-btn:hover{
+    cursor: pointer;
+    color: #eeeeee;
+}
+
+.title{
+    font-size: 60px;
+    letter-spacing: 8px;
+    font-family: 'Merriweather', 'Courier New', Courier;
+    margin: 20px 10px;
+}
+
+.creation-date{
+    font-family: 'Quicksand', 'MS Comic Sans';
+    margin: 0;
+}
