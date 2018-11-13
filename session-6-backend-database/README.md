@@ -154,20 +154,3 @@ You've learned how to save application data onto a database! Unfortunately, this
 ## Finishing the Blog App
 
 With the backend-template project we've been working on in today's workshop, all of the front end code has been provided to you. However, there are many gaps in the backend code that need to be completed. In the `index.js` file and the "routes" folder's `posts.js` file we've written many TODOs where code needs to be added. You'll have the next few weeks to fill out this code to get all of the features of the blog app working.
-
-## Run the demo
-
-First clone the repository from this github using `git clone`. Read more about it [here](https://git-scm.com/docs/git-clone).
-
-Make sure you have [set up a Firebase project](https://firebase.google.com/). 
-Click on "GET STARTED" and follow along.
-
-In the Firebase console, click on the setting button, go to "project settings". 
-Click on Service accounts and click "Generate new private key".
-
-Rename the downloaded JSON file to `firebase-key.json`.
-Put this JSON file into the directory`18HackschoolFinalProject/backend/` that we just cloned from GitHub.
-
-
-
-
