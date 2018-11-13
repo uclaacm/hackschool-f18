@@ -53,7 +53,7 @@ First, you'll want to download the backend template project for the blog app. If
 
 Since Firebase is an online platform, we'll need to make an account through Google to be able to connect our application to the online database we make. Please follow these steps:
 
-1. Go to the [Firebase website](firebase.google.com)
+1. Go to the [Firebase website](https://firebase.google.com/)
 2. Make a Google account if you do not already have one, otherwise sign in with your account
 3. Click "Go To Console" on the home page
 4. Create a new project by clicking "Add project"
