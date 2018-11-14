@@ -92,6 +92,8 @@ const postsCollection = db.collection('posts');
 
 On top of being quick to set up, Firebase is supported by very thorough and readable documentation. For instance, almost everything I've explained so far can be found in the Firebase documentation on a single page [here](https://firebase.google.com/docs/admin/setup). There are many Firebase details, and I may not be able to cover them all in the time that we have. For anything you are not clear about, please read the documentation as it should be able to solve most of your issues.
 
+**End Aside**
+
 Remember that Firebase stores data objects as "documents" while we use javascript objects in the code that we write. To make sure we can use what Firebase gives us, we need to write a function to convert between data formats.
 
 ``` javascript
@@ -125,6 +127,22 @@ async function addPost(post) {
 }
 ```
 There's a few things to note here. Remember that we use async functions for operations that may take a long time. Writing to, deleting from, and updating a database takes time. This means that whenever we want to change the state of the database or ask it for some data, its best to write async functions. The `FieldValue` is used to keep track of when a post was created on the database, you can read more about it [here](https://firebase.google.com/docs/reference/js/firebase.firestore.FieldValue).
+
+
+At this point, we've written the function that correctly adds a post to our Firevase database! There is one last step though. This function can only be used by backend code right now. If someone working on the frontend wants to allow a post to be added to the database if a user clicks on a button to do so, they have no way of accessing the behavior we just implemented! Let's create the route in our API that lets others do this.
+
+```javascript
+router.post('/', async (req, res, next) => {
+	try {
+		const id = await addPost(req.body);
+		res.end(id);
+	} catch (err) {
+		next(err);
+	}
+});
+```
+
+For an outside user of our backend code, this route says "if you make a post request to the `/` route on the backend, you'll add a post to the database".
 
 With this implemented, let's start the blog app and see what we have so far. Please follow these steps:
 

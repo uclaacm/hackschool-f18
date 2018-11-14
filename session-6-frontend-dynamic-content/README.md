@@ -20,29 +20,25 @@
 
 ## Note
 
-To preface this session, I'd like to note that this session will be more theoretical. I want to make sure everyone understands the role of a database and how to use one in their applications. Instead of the demo and exercise, you'll be able to practice the concepts you learn today (and all the concepts you've learned so far) by building the backend portion of the blog app!
+Since today's workshop will be used to help you get started on the final project, instead of doing a stand-alone demo, the code we'll be writing today will help you practice what I've taught today and it'll be part of your final blog app.
 
 ## Review React
 
-In the last session, we learned why people use React for frontend development today. Then, we learned javascript classes as a foundation for learning how to write React components. Regarding components, we learned about the importance of props and state.
+In the last session, we learned why people use React for frontend development today. Then, we learned javascript classes as a foundation for learning how to write React components. With components, we learned about the importance of props and state. Here are the most important takeaways from our previous lecture on React.
 
-## Why are they important?
+1. React lets us write reusable pieces of front-end code called *components*.
+2. Components are like "custom HTML tags" that can be used inside other HTML tags or even other components.
+3. Components don't have to be the same every time - they can be passed data through a custom *attribute* which gives data to the component's *props*.
+4. Each component keeps track of some data that is only used for itself, this data is tracked in the *state* object.
+5. The props of a component are passed down to child components, but never in the other direction.
 
-So far, the applications we've written either get data from an API and do some kind of operation with it (display it on a page, use it to perform a calculation on the server, etc.) or write our manually-inputted data into a temporary array or object. The backend code for these types of applications is generally not too difficult to manage, as we only need to deal with routing and each route can have its own object or array that it uses to manage its data.
+## What is dynamic content?
 
-Consider an app like a Todo List. In this app we can add new tasks and cross off tasks that we've already completed. Using what you've learned so far, you can build something like this! BUT, there is one big issue. Let's say I've added a few tasks and marked some of them as completed. If I close this application and start it again, my Todo List will have no items!
+This quarter, we've been learning how to build web applications - websites that have some client-server communication. In all of the demos we've done so far our applications have
 
-Databases are very important to us because they give us the power of persistent storage to our applications.
+## 
 
-If the tasks of a Todo List are stored in a database instead of an array managing all of the tasks, the next time we open up the application, the Todo List will be able to ask the database for the current set of tasks and remember where we left off from last time!
 
-## How can I use a database in my own applications?
-
-Most database systems can be installed by simply going to a website and "downloading" (i.e. like most other software, and like the way we installed Node.js during previous workshops). Likewise, they usually have a terminal / console window that can be used to interact with the database using special commands. Using these types of databases, the application data that we save is stored on our own computers.
-
-However, today we'll be using a database that's a little different: Firebase.
-
-Firebase is a "cloud platform", which means that it provides many services online rather than having to download them on to our computer to use locally. Our data in the Firebase database will be stored online, i.e. "on the cloud". This means that the database and all of our data inside it will be living online on a different computer. In the next steps, we'll learn how to use Firebase for the blog app we'll be making!
 
 
 ## Blog App Backend

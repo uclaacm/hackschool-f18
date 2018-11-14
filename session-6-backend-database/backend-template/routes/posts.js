@@ -4,25 +4,21 @@ const express = require('express');
 const router = express.Router();
 const {
 	addPost,
-	getPost,
-	getCurrentPosts,
-	deletePost,
+	//getPost,
+	//getCurrentPosts,
+	//deletePost,
 } = require('../database/index.js');
 
 /**
 * endpoint: /
 * method: GET
 * description: Get all posts in chronological order, latest first
-* responses: an array of blog object 
+* responses: an array of blog object
 * blog: { id: string, title: string, body: string, creationTime: JS-timestamp }
 */
-router.get('/', async (req, res, next) => {
-	try {
-		res.json(await getCurrentPosts());
-	} catch (err) {
-		next(err);
-	}
-});
+
+// TODO: add a route at '/' that returns to the frontend a list of all of the posts as JSON objects
+
 
 /**
 * endpoint: /
@@ -31,6 +27,8 @@ router.get('/', async (req, res, next) => {
 * body: { title: string, body: string }
 * responses: { message: 'ok' }
 */
+
+// TODO: add a route at '/' that lets the frontend create a post on the database
 router.post('/', async (req, res, next) => {
 	try {
 		const id = await addPost(req.body);
@@ -49,18 +47,9 @@ router.post('/', async (req, res, next) => {
 *   - { message: 'not found' } (400)
 * blog: { id: string, title: string, body: string, creationTime: JS-timestamp }
 */
-router.get('/:id', async (req, res, next) => {
-	try {
-		const post = await getPost(req.params.id);
-		if (post === null) {
-			res.status(404).json({ message: 'not found' });
-			return;
-		}
-		res.json(post);
-	} catch (err) {
-		next(err);
-	}
-});
+
+// TODO: add a route at '/:id' that lets the frontend retrieve a single post from the database
+
 
 /**
 * endpoint: /:id
@@ -68,14 +57,9 @@ router.get('/:id', async (req, res, next) => {
 * description: Delete a blog post with ID == id
 * responses: { message: 'ok' } (200)
 */
-router.delete('/:id', async (req, res, next) => {
-	try {
-		await deletePost(req.params.id);
-		res.json({ message: 'ok' });
-	} catch (err) {
-		next(err);
-	}
-});
+
+// TODO: add a route at '/:id' that lets the frontend delete a single post from the database based on a given 'id'
+
 
 // Register an error handler as well.
 router.use((err, req, res) => {

@@ -1,60 +1,33 @@
 'use strict';
 
-const admin = require('firebase-admin');
-const { FieldValue } = admin.firestore;
+// TODO: initialize application with credentials
 
-admin.initializeApp({
-	credential: admin.credential.cert(require('../firebase-key.json')),
-});
+// TODO: create database and collection of posts
 
-const db = admin.firestore();
-db.settings({ timestampsInSnapshots: true });
-
-const postsCollection = db.collection('posts');
-
-// Converts a Firebase document to a JavaScript object we could JSON-stringify.
-function docSnapshotToData(doc) {
-	const { title, body, creationTime } = doc.data();
-	return {
-		id: doc.id,
-		title,
-		body,
-		creationTime: creationTime.toMillis(),
-	};
-}
+// TODO: function that converts a Firebase document to a JavaScript object we could JSON-stringify.
 
 // post is an object with the following fields:
 // - title (string)
 // - body (string): body of the post in HTML
-async function addPost(post) {
-	const doc = await postsCollection.add({
-		title: post.title,
-		body: post.body,
-		creationTime: FieldValue.serverTimestamp(),
-	});
-	return doc.id;
-}
 
-async function getPost(id) {
-	const doc = await postsCollection.doc(id).get();
-	if (!doc.exists) {
-		return null;
-	}
-	return docSnapshotToData(doc);
-}
+// TODO: implement function to add a post to the database
+// addPost(post)
 
-async function getCurrentPosts() {
-	const snapshot = await postsCollection.orderBy('creationTime', 'desc').get();
-	return snapshot.docs.map(docSnapshotToData);
-}
+// TODO: implement function to get a single post from database based on id
+// getPost(id)
 
-async function deletePost(id) {
-	return postsCollection.doc(id).delete();
-}
+
+// TODO: implement function to get ALL of the current posts and list them in order of creation
+// getCurrentPosts()
+
+
+// TODO: implement function to delete post based on id
+// deletePost(id)
+
 
 module.exports = {
 	addPost,
-	getPost,
-	getCurrentPosts,
-	deletePost,
+	//getPost,
+	//getCurrentPosts,
+	//deletePost,
 };
