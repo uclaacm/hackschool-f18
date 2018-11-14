@@ -54,13 +54,18 @@ us if you have any questions or comments.
         * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-5-backend-async)
 * Week 7:
    - Front-End Track: Dynamic Content
+        * [Slides](http://tinyurl.com/hackschool-f4)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-6-frontend-dynamic-content)
    - Back-End Track: Databases
+        * [Slides](http://tinyurl.com/hackschool-b4)
+        * [Code](https://github.com/uclaacm/hackschool-f18/tree/master/session-6-backend-database)
 * Week 8:
-   - **No Hackschool - Thanksgiving**
+   - Project work in Covel 227
 * Week 9:
-   - Project work
+   - Project work in Covel 227
+   - Extra office hours in Sproul Hall 110B 2-4pm Saturday Dec 1
 * Week 10:
-   - Demo
+   - Demo Day!
 
 ## Essential Links 
 
