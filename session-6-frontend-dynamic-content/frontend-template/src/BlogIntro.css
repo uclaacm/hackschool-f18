@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.intro-line{
+    font-family: 'RaleWay', sans-serif;
+    font-size: 8vw; 
+    margin-top: 3vh;
+}
+
+
+.emo{
+    background-color: #bbbbbb;
+}

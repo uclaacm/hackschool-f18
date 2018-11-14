@@ -1,0 +1,22 @@
+.btn-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.compose-btn{
+    background-color: transparent;
+    border: none;
+    font-size: 2.5vw; 
+    margin: 10px;
+    color: #888888;
+}
+
+.compose-btn:hover{
+    cursor: pointer;
+    color: #eeeeee;
+}
+
+.compose-btn:focus{
+    outline: 0 !important;
+}

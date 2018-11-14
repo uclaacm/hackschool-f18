@@ -79,7 +79,7 @@ admin.initializeApp({
 	credential: admin.credential.cert(require('../firebase-key.json')),
 });
 ```
-Next, we need to create a variable that has access to the actual database that we've created. Then, we'ld like to create a collection called "posts" in the database.
+Next, we need to create a variable that has access to the actual database that we've created. Then, we'd like to create a collection called "posts" in the database.
 
 ``` javascript
 const db = admin.firestore();

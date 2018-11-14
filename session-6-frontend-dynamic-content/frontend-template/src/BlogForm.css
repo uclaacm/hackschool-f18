@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+
+.blog-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.custom-in{
+    border: none;
+    background: transparent;
+    text-align: center;
+}
+
+.custom-in:focus{
+    outline: none;
+}
+
+.content-in{
+    font-size: 17px;
+    font-family: 'Courier New', Courier, monospace;
+    width: 80%;
+}
+
+.title-in{
+    font-size: 50px;
+    margin: 20px;
+    width: 80%;
+    font-family: 'Merriweather', sans-serif;
+}
+
+.send-btn{
+    background-color: transparent;
+    border: none;
+    color: #666666;
+    font-size: 30px;
+}
+
+.send-btn:hover{
+    cursor: pointer;
+    color: #eeeeee;
+}
+
+.send-btn:focus{
+    outline: none;
+}
