@@ -1,4 +1,4 @@
-# Hackschool Session 6 Backend: Databases with Firebase
+# Hackschool Session 6 Frontend: Dynamic Content
 **Location**: Covel 227
 **Time**: 6:15-7:15pm, November 14, 2018.
 
