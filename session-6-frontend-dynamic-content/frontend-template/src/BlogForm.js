@@ -1,6 +1,6 @@
 import React from 'react';
 import './BlogForm.css';
-import * as api from './api';
+// TODO: access api functions
 
 const initState = {
     title: '',

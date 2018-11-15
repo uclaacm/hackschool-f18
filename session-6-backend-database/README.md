@@ -129,7 +129,7 @@ async function addPost(post) {
 There's a few things to note here. Remember that we use async functions for operations that may take a long time. Writing to, deleting from, and updating a database takes time. This means that whenever we want to change the state of the database or ask it for some data, its best to write async functions. The `FieldValue` is used to keep track of when a post was created on the database, you can read more about it [here](https://firebase.google.com/docs/reference/js/firebase.firestore.FieldValue).
 
 
-At this point, we've written the function that correctly adds a post to our Firevase database! There is one last step though. This function can only be used by backend code right now. If someone working on the frontend wants to allow a post to be added to the database if a user clicks on a button to do so, they have no way of accessing the behavior we just implemented! Let's create the route in our API that lets others do this.
+At this point, we've written the function that correctly adds a post to our Firebase database! There is one last step though. This function can only be used by backend code right now. If someone working on the frontend wants to allow a post to be added to the database if a user clicks on a button to do so, they have no way of accessing the behavior we just implemented! Let's create the route in our API that lets others do this.
 
 ```javascript
 router.post('/', async (req, res, next) => {

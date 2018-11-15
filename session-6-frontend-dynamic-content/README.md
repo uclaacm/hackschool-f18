@@ -1,4 +1,4 @@
-# Hackschool Session 6 Backend: Databases with Firebase
+# Hackschool Session 6 Frontend: Dynamic Content
 **Location**: Covel 227
 **Time**: 6:15-7:15pm, November 14, 2018.
 
@@ -20,7 +20,7 @@
 
 ## Note
 
-Since today's workshop will be used to help you get started on the final project, instead of doing a stand-alone demo, the code we'll be writing today will help you practice what I've taught today and it'll be part of your final blog app.
+Since today's workshop will be used to help you get started on the final project, instead of doing a stand-alone demo, the code we'll be writing today will directly implement some of the features of the final blog app.
 
 ## Review React
 
@@ -29,100 +29,142 @@ In the last session, we learned why people use React for frontend development to
 1. React lets us write reusable pieces of front-end code called *components*.
 2. Components are like "custom HTML tags" that can be used inside other HTML tags or even other components.
 3. Components don't have to be the same every time - they can be passed data through a custom *attribute* which gives data to the component's *props*.
-4. Each component keeps track of some data that is only used for itself, this data is tracked in the *state* object.
-5. The props of a component are passed down to child components, but never in the other direction.
+4. Each component can optionally keep track of some data that is only used for itself, this data is tracked in the *state* object.
+5. The props of a component are passed down to child components' state, but seldom in the other direction.
 
-## What is dynamic content?
+## What is Dynamic Content?
 
-This quarter, we've been learning how to build web applications - websites that have some client-server communication. In all of the demos we've done so far our applications have
+When you first hear dynamic content, you might be tempted to think that this refers to anything that moves on a page. But, we aren't talking about fancy animations or effects on a webpage when we talk about dynamic content. Dynamic content is used to refer to the capability of a web page to serve customized content and run or serve code seemingly "on the fly" in the browser using data from the user's computer or data from another computer or server connected to the internet. Serving dynamic content is a powerful feature of many popular websites. 
 
-## 
+## Dynamic Content with Fetch
 
+What is fetch and how is it related to dynamic content? Fetch is a way for client code (i.e. the frontend) to run code in the user's browser to ask for and process data from other websites. During the lecture I'll show how fetch is commonly used to implement "endless scrolling" features on popular social media websites. While fetch is powerful for its ability to grab data from anywhere online, it can also be used to get data from our own servers on our computer. This is exactly what we'll be doing for the blog app!
 
+## Blog App Frontend
 
+First, you'll want to download the frontend template project for the blog app. If you are viewing this README on GitHub, just scroll to the top of the page and click the green button. You will have the option of using `git clone` or downloading the folder as a zip file.
 
-## Blog App Backend
+## Fetch to Add Posts
 
-First, you'll want to download the backend template project for the blog app. If you are viewing this README on GitHub, just scroll to the top of the page and click the green button. You will have the option of using `git clone` or downloading the folder as a zip file.
+There are many components and behaviors that the blog needs to support. Today, we'll implement one important feature together so you can use it as an example to complete everything else that needs to be done. Together we'll make a React form component for adding new posts. The submit button for this form will use fetch to add the newly submitted post to our backend's database!
 
-## Set up the Firebase Account
+From the `src` folder of the `frontend-folder`, open `BlogForm.js`. Go ahead and open up the `api.js` file in the same directory level as well.
 
-Since Firebase is an online platform, we'll need to make an account through Google to be able to connect our application to the online database we make. Please follow these steps:
-
-1. Go to the [Firebase website](firebase.google.com)
-2. Make a Google account if you do not already have one, otherwise sign in with your account
-3. Click "Go To Console" on the home page
-4. Create a new project by clicking "Add project"
-5. In your new project, click the gear symbol next to "Project Overview" and click "Project settings"
-6. There should be a row of tabs at the top of the page, please click on "Service accounts"
-7. On this page, click on "Generate new private key" on the bottom of the page; this will download a file with information that will help our blog application connect to our online Firebase database. Rename this file to "firebase-key.json" and save it in the blog template folder you downloaded in the previous step.
-8. Finally, click on the "Database" section from the sidebar on the left
-9. Here, make sure that the dropdown next to the "Database" header on the page is set to "Cloud Firestore" rather than "Realtime Database"
-
-Now, if you look at the file we just downloaded, you'll notice that it contains many pieces of identification and administration information in one big JSON object. Firebase has taken care of generating all of this for us, and don't worry if you don't understand what each field means - our application code will make it easy for us to use this information to connect to the database.
-
-## Integrating Firebase in our Application Code
-
-First, make sure we have all of our project dependencies locally by running `npm install` in the backend-template folder. Then, within this folder, find the "database" folder and open up the `index.js` file. All of the code we'll write today will be in this file.
-
-At the top of the file, we'll need to tell our application that we have administrator access to a Firebase database. We can do this by showing our application proof - the `firebase-key.json` file.
+First, we need to write a function that uses fetch to add posts to the database. I'll explain what this code does after we've written the function. Let's add the following function to the `api.js` file:
 
 ```javascript
-const admin = require('firebase-admin');
-const { FieldValue } = admin.firestore;
-
-admin.initializeApp({
-	credential: admin.credential.cert(require('../firebase-key.json')),
-});
+const addPost = async (post) => {
+    const resp = await fetch(APIURL, {
+        method: 'post',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(post)
+    });
+    if (!resp.ok) {
+        throwError(resp);
+    }
+};
 ```
-Next, we need to create a variable that has access to the actual database that we've created. Then, we'd like to create a collection called "posts" in the database.
+There are a lot of things going on in this little piece of code. First, notice that we've created an async function. Don't worry about this too much, it just means that adding a post to the database can take a while so we want to make sure we account for that. Next, notice how we use `fetch` here. Fetch is given two parameters, a `URL` string and an optional object that is used for special things we want our fetch call to do. In this case, we aren't just using fetch for its default behavior (which is to retrieve data from the database). Instead, we telling our backend to *add* data to the database. These options are provided as a javascript object, and they'll be familiar if you remember the HTTP workshop and the work we've done with Postman so far. First we specify that we are making a POST request to our backend code. Then, we note that the data we are sending is in JSON format. Finally, we convert our data, which is the `post` parameter, to the JSON format like we said we would do in the previous option we set in the header of our request.
 
-``` javascript
-const db = admin.firestore();
-db.settings({ timestampsInSnapshots: true });
+Whew! This function is pretty short, but there's a lot to unpack and understand here. Please ask the mentors or the presenter about any questions you may have about this code!
 
-const postsCollection = db.collection('posts');
+With this function we have a way, in our frontend code, to let users of our application add blog posts. Now we need to make the React form that we can tie this feature to.
+
+## Adding a React Form for new Posts
+
+Next, let's create the form that users can submit new posts through. Go ahead and open the `BlogForm.js` file. This is the last place we'll be writing code today.
+
+```javascript
+const initState = {
+    title: '',
+    content: ''
+};
+
+class BlogForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = initState;
+    }
+
+    updateTitle = (e) => {
+        this.setState({
+            title: e.target.value
+        });
+    }
+
+    updateContent = (e) => {
+        this.setState({
+            content: e.target.value
+        });
+		}
 ```
 
-**Aside**
+This code starts our component. Our form will be made up of two inputs for the title and body of the new post and a button to submit the form. Next, lets implement the function that adds the new post using our api:
 
-On top of being quick to set up, Firebase is supported by very thorough and readable documentation. For instance, almost everything I've explained so far can be found in the Firebase documentation on a single page [here](https://firebase.google.com/docs/admin/setup). There are many Firebase details, and I may not be able to cover them all in the time that we have. For anything you are not clear about, please read the documentation as it should be able to solve most of your issues.
+```javascript
+newPost = () => {
+        const { title, content } = this.state;
+        if (title === '') {
+            alert('Title is empty');
+            return;
+        } else if (content === '') {
+            alert('Content is empty');
+            return;
+        }
 
-Remember that Firebase stores data objects as "documents" while we use javascript objects in the code that we write. To make sure we can use what Firebase gives us, we need to write a function to convert between data formats.
-
-``` javascript
-// Converts a Firebase document to a JavaScript object we could JSON-stringify.
-function docSnapshotToData(doc) {
-	const { title, body, creationTime } = doc.data();
-	return {
-		id: doc.id,
-		title,
-		body,
-		creationTime: creationTime.toMillis(),
-	};
-}
+        const newPost = {
+            title,
+            body: content
+        };
+        try {
+            api.addPost(newPost);
+            this.props.onSend();
+            this.setState(initState);
+        } catch (err) {
+            alert(err);
+        }
+		}
 ```
 
-## Writing Database Code
+Finally, lets write the code that builds the structure of our component. It looks like a lot but I'll explain as I go; we're really just adding the inputs and submit tags with some initial properties.
 
-Finally, we get to show interaction between data in our online database and code in our application. We can't have a blog without being able to write posts! Let's write a function to do this.
-
-``` javascript
-// post is an object with the following fields:
-// - title (string)
-// - body (string): body of the post in HTML
-async function addPost(post) {
-	const doc = await postsCollection.add({
-		title: post.title,
-		body: post.body,
-		creationTime: FieldValue.serverTimestamp(),
-	});
-	return doc.id;
-}
+```javascript
+return (
+	<div>
+		<div className="blog-form">
+			<input 
+				className="title-in custom-in" 
+				placeholder={titlePH}
+				onFocus={onFocusHidePH}
+				onBlur={onBlurShowPH(titlePH)}
+				onChange={this.updateTitle}
+				value={this.state.title}
+			/>
+			<textarea
+				className="content-in custom-in" 
+				placeholder={contentPH}
+				onFocus={onFocusHidePH}
+				onBlur={onBlurShowPH(contentPH)}
+				rows="30"
+				onChange={this.updateContent}
+				value={this.state.content}
+			/>
+			<button
+				className="send-btn" 
+				onClick={this.newPost}
+			>
+				Send!
+			</button>
+		</div>
+	</div>
+				);
 ```
-There's a few things to note here. Remember that we use async functions for operations that may take a long time. Writing to, deleting from, and updating a database takes time. This means that whenever we want to change the state of the database or ask it for some data, its best to write async functions. The `FieldValue` is used to keep track of when a post was created on the database, you can read more about it [here](https://firebase.google.com/docs/reference/js/firebase.firestore.FieldValue).
 
-With this implemented, let's start the blog app and see what we have so far. Please follow these steps:
+Here, we've added the inputs and button. Additionally, we've set their default values and, most importantly, attached the `newPost` function to the button with the `onclick` attribute.
+
+With this implemented, let's start the blog app and see what we have. Please follow these steps:
 
 To start the backend,
 
@@ -143,10 +185,14 @@ npm start
 
 You should be able to see app at localhost:3000
 
-Let's try to COMPOSE a post on this page. After you've done so, what do you notice? We can't see the post! Let's head over to our Firebase console to see what's happening. Click on "Database" on the left sidebar. What do you notice now?
+Let's try to COMPOSE a post on this page. After you've done so, what do you notice?
 
-You've learned how to save application data onto a database! Unfortunately, this is all we have time for today. Get started on the rest of the blog!!!
+Today you've learned how to write a React form and use fetch to get data from backend that we have access to! Unfortunately, this is all we have time for today. Get started on the rest of the blog!!!
 
 ## Finishing the Blog App
 
-With the backend-template project we've been working on in today's workshop, all of the front end code has been provided to you. However, there are many gaps in the backend code that need to be completed. In the `index.js` file and the "routes" folder's `posts.js` file we've written many TODOs where code needs to be added. You'll have the next few weeks to fill out this code to get all of the features of the blog app working.
+With the frontend-template project we've been working on in today's workshop, all of the backend code has been provided to you. However, there are some gaps in the frontend code that need to be completed. In the `api.js` there are additional functions that use fetch that need to be implemented.
+
+Finally, yes we know that the blog doesn't look particularly amazing. We're counting on you to transform the version of the blog we've given you using what you've learned about CSS animations, flexbox, and React! This is your chance to transform the blog into something personalized that you can be proud of!
+
+You'll have the next few weeks to fill out the remaining code to get all of the features of the blog app working.
