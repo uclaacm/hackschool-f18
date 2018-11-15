@@ -7,7 +7,7 @@
 ## Resources
 
 **Slides**
-* [Session 6 Frontend: Databases with Firebase](https://docs.google.com/presentation/d/1izU_-yczSm9IJa__8trmClNN0UMSajW-uA4f5kgO37E/edit?usp=sharing)
+* [Session 6 Frontend: Dynamic Content](https://docs.google.com/presentation/d/1izU_-yczSm9IJa__8trmClNN0UMSajW-uA4f5kgO37E/edit?usp=sharing)
 
 **ACM Membership Attendance Portal**
 * [Portal](https://members.uclaacm.com/login)
