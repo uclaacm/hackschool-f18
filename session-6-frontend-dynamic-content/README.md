@@ -20,25 +20,25 @@
 
 ## Note
 
-Since today's workshop will be used to help you get started on the final project, instead of doing a stand-alone demo, the code we'll be writing today will directly implement some of the features of the final blog app.
+Since today's workshop will be used to help you get started on the final project, instead of doing a stand-alone demo, the code we'll be writing today will directly implement some of the features of the blog app.
 
 ## Review React
 
 In the last session, we learned why people use React for frontend development today. Then, we learned javascript classes as a foundation for learning how to write React components. With components, we learned about the importance of props and state. Here are the most important takeaways from our previous lecture on React.
 
 1. React lets us write reusable pieces of front-end code called *components*.
-2. Components are like "custom HTML tags" that can be used inside other HTML tags or even other components.
-3. Components don't have to be the same every time - they can be passed data through a custom *attribute* which gives data to the component's *props*.
-4. Each component can optionally keep track of some data that is only used for itself, this data is tracked in the *state* object.
-5. The props of a component are passed down to child components' state, but seldom in the other direction.
+2. Components are like "custom HTML tags" we write that can be nested inside other HTML tags or even other components.
+3. Components can be dynamic: they can be passed data through a custom *attribute* which gives data to the component's *props*.
+4. Each component can optionally manage its own data, this data is tracked in the *state* object.
+5. A common pattern you will often see is the props of a component being passed down to child components using an attribute, these props often become part of the child components' state.
 
 ## What is Dynamic Content?
 
-When you first hear dynamic content, you might be tempted to think that this refers to anything that moves on a page. But, we aren't talking about fancy animations or effects on a webpage when we talk about dynamic content. Dynamic content is used to refer to the capability of a web page to serve customized content and run or serve code seemingly "on the fly" in the browser using data from the user's computer or data from another computer or server connected to the internet. Serving dynamic content is a powerful feature of many popular websites. 
+When you first hear "dynamic content", you might be tempted to think this refers to anything that moves on a page. But, we aren't talking about fancy animations or effects on a webpage. Dynamic content is often used to refer to the capability of a web page to serve customized content and run code seemingly "on the fly" in the browser using data from the user's computer or data from another computer or server connected to the internet. Serving dynamic content is a powerful feature of many popular websites.
 
 ## Dynamic Content with Fetch
 
-What is fetch and how is it related to dynamic content? Fetch is a way for client code (i.e. the frontend) to run code in the user's browser to ask for and process data from other websites. During the lecture I'll show how fetch is commonly used to implement "endless scrolling" features on popular social media websites. While fetch is powerful for its ability to grab data from anywhere online, it can also be used to get data from our own servers on our computer. This is exactly what we'll be doing for the blog app!
+What is fetch and how is it related to dynamic content? `fetch()` is a JavaScript function which lets client code (i.e. the frontend) in the user's browser ask for and process data from other websites. Soon, we'll see how fetch is commonly used to implement features such as "endless scrolling" which are popular on social media websites. While fetch is powerful for its ability to grab data from anywhere online, it can also be used to get data from our own servers on our computer. This is exactly what we'll be doing for the blog app!
 
 ## Blog App Frontend
 
@@ -46,9 +46,9 @@ First, you'll want to download the frontend template project for the blog app. I
 
 ## Fetch to Add Posts
 
-There are many components and behaviors that the blog needs to support. Today, we'll implement one important feature together so you can use it as an example to complete everything else that needs to be done. Together we'll make a React form component for adding new posts. The submit button for this form will use fetch to add the newly submitted post to our backend's database!
+There are many components and behaviors that need to be implemented for the blog to work. Today, we'll implement one important feature together. Use this as an example to complete everything else that needs to be done! Together we'll make a React form component for adding new posts. The submit button for this form will use fetch to add the newly submitted post to our backend's database!
 
-From the `src` folder of the `frontend-folder`, open `BlogForm.js`. Go ahead and open up the `api.js` file in the same directory level as well.
+From the `src` folder of the `frontend-folder`, open `BlogForm.js`. Go ahead and open up the `api.js` file from the same directory level as well.
 
 First, we need to write a function that uses fetch to add posts to the database. I'll explain what this code does after we've written the function. Let's add the following function to the `api.js` file:
 
@@ -66,7 +66,7 @@ const addPost = async (post) => {
     }
 };
 ```
-There are a lot of things going on in this little piece of code. First, notice that we've created an async function. Don't worry about this too much, it just means that adding a post to the database can take a while so we want to make sure we account for that. Next, notice how we use `fetch` here. Fetch is given two parameters, a `URL` string and an optional object that is used for special things we want our fetch call to do. In this case, we aren't just using fetch for its default behavior (which is to retrieve data from the database). Instead, we telling our backend to *add* data to the database. These options are provided as a javascript object, and they'll be familiar if you remember the HTTP workshop and the work we've done with Postman so far. First we specify that we are making a POST request to our backend code. Then, we note that the data we are sending is in JSON format. Finally, we convert our data, which is the `post` parameter, to the JSON format like we said we would do in the previous option we set in the header of our request.
+There are a lot of new things going on in these few lines of code. First, notice that we've created an async function. Adding a post to our database may not be instantaneous. So, we want to make sure that wherever we use the `addPost()` function in our code, we wait for it to complete before moving on to the next line of code. If you'd like a more in-depth explanation, please go over the resources [here](https://github.com/uclaacm/hackschool-f18/tree/master/session-5-backend-async). Next, notice that we've called `fetch()`! Fetch is a JavaScript function that takes two parameters, a `URL` string and an optional object that is used to tell fetch about anything special about how we want to fetch our data. In this case, we aren't just using fetch for its default behavior (which is to retrieve data from a given URL). Instead, we want to tell our backend to *add* data to the database. To do this, we've provided options as a javascript object - they'll be familiar if you remember the HTTP workshop and the work we've done with Postman so far. If you'd like a refresher on this material please read [here](https://github.com/uclaacm/hackschool-f18/tree/master/session-3-backend-api). First we specify that we are making a POST request to the route at APIURL which our server is providing to add data to our database. Then, we note that the data we are sending is in JSON format with the `Content-Type` field. Finally, we convert our data, which is the `post` object in the parameter, to the JSON format like we said we would do in the previous option we set in the `Content-Type`.
 
 Whew! This function is pretty short, but there's a lot to unpack and understand here. Please ask the mentors or the presenter about any questions you may have about this code!
 
@@ -74,7 +74,7 @@ With this function we have a way, in our frontend code, to let users of our appl
 
 ## Adding a React Form for new Posts
 
-Next, let's create the form that users can submit new posts through. Go ahead and open the `BlogForm.js` file. This is the last place we'll be writing code today.
+Next, let's create the form that users can submit new posts with. Go ahead and open the `BlogForm.js` file. Here, we'd like to create a component that lets the user type in a `title` and `body`. Additionally, we want to give the user a `send` button that adds the post with the given information. Let's start with some initial code for creating any component:
 
 ```javascript
 const initState = {
@@ -98,10 +98,10 @@ class BlogForm extends React.Component {
         this.setState({
             content: e.target.value
         });
-		}
+	}
 ```
 
-This code starts our component. Our form will be made up of two inputs for the title and body of the new post and a button to submit the form. Next, lets implement the function that adds the new post using our api:
+Here you'll notice that we set our component's state to `initState`. We do this because we want the form's initial text for title and body to be empty. Then, we've written two functions that listen for changes to either of the input fields and accordingly update the values of our state object to reflect the user's changes. Let's implement the function that adds the new post using our api:
 
 ```javascript
 newPost = () => {
@@ -125,46 +125,52 @@ newPost = () => {
         } catch (err) {
             alert(err);
         }
-		}
+}
 ```
 
-Finally, lets write the code that builds the structure of our component. It looks like a lot but I'll explain as I go; we're really just adding the inputs and submit tags with some initial properties.
+The first thing we do here is check whether the title or body of a post about to be submitted is empty. We don't want to show posts with no title or body! Finally, we turn the new post into an object and use the `addPost()` function we wrote earlier to execute the update to the database through our server. Now, lets write the code that builds the structure of our component. It seems like many lines of code, but we're really specifying the inputs and submit tags and giving them some nice visual properties;
 
 ```javascript
-return (
-	<div>
-		<div className="blog-form">
-			<input 
-				className="title-in custom-in" 
-				placeholder={titlePH}
-				onFocus={onFocusHidePH}
-				onBlur={onBlurShowPH(titlePH)}
-				onChange={this.updateTitle}
-				value={this.state.title}
-			/>
-			<textarea
-				className="content-in custom-in" 
-				placeholder={contentPH}
-				onFocus={onFocusHidePH}
-				onBlur={onBlurShowPH(contentPH)}
-				rows="30"
-				onChange={this.updateContent}
-				value={this.state.content}
-			/>
-			<button
-				className="send-btn" 
-				onClick={this.newPost}
-			>
-				Send!
-			</button>
-		</div>
-	</div>
-				);
+render(){
+    const onFocusHidePH = (e) => { e.target.placeholder = ''; };
+        const titlePH = 'Title';
+        const contentPH = 'Content';
+        const onBlurShowPH = (ph) => {
+            return (e) => { e.target.placeholder = ph; };
+        };
+    return (
+        <div>
+            <div className="blog-form">
+                <input 
+                    className="title-in custom-in" 
+                    placeholder={titlePH}
+                    onFocus={onFocusHidePH}
+                    onBlur={onBlurShowPH(titlePH)}
+                    onChange={this.updateTitle}
+                    value={this.state.title}
+                />
+                <textarea
+                    className="content-in custom-in" 
+                    placeholder={contentPH}
+                    onFocus={onFocusHidePH}
+                    onBlur={onBlurShowPH(contentPH)}
+                    rows="30"
+                    onChange={this.updateContent}
+                    value={this.state.content}
+                />
+                <button
+                    className="send-btn" 
+                    onClick={this.newPost}
+                >
+                    Send!
+                </button>
+            </div>
+        </div>
+    )
+}
 ```
 
-Here, we've added the inputs and button. Additionally, we've set their default values and, most importantly, attached the `newPost` function to the button with the `onclick` attribute.
-
-With this implemented, let's start the blog app and see what we have. Please follow these steps:
+With our component implemented, let's run the blog app to see our results. Please follow these steps:
 
 To start the backend,
 
@@ -187,12 +193,10 @@ You should be able to see app at localhost:3000
 
 Let's try to COMPOSE a post on this page. After you've done so, what do you notice?
 
-Today you've learned how to write a React form and use fetch to get data from backend that we have access to! Unfortunately, this is all we have time for today. Get started on the rest of the blog!!!
+Today you've learned how to write a React form and use fetch to request data from our own server! Unfortunately, this is all we have time for today. Get started on the rest of the blog!!!
 
 ## Finishing the Blog App
 
-With the frontend-template project we've been working on in today's workshop, all of the backend code has been provided to you. However, there are some gaps in the frontend code that need to be completed. In the `api.js` there are additional functions that use fetch that need to be implemented.
+With the frontend-template project we've been working on in today's workshop, all of the backend code has been provided to you. However, there are some features in the frontend code that need to be completed. In the `api.js` there are additional functions that use fetch that need to be implemented.
 
-Finally, yes we know that the blog doesn't look particularly amazing. We're counting on you to transform the version of the blog we've given you using what you've learned about CSS animations, flexbox, and React! This is your chance to transform the blog into something personalized that you can be proud of!
-
-You'll have the next few weeks to fill out the remaining code to get all of the features of the blog app working.
+Finally, we know that the blog doesn't look particularly amazing. We're counting on you to transform the version of the blog we've provided into something amazing and personal to you. Draw from what you've learned about CSS animations, flexbox, and React throughout the quarter (along with cool stuff you might have learned on your own)! This is your chance to transform the blog into a project that you can be proud of!

@@ -34,7 +34,8 @@ class Blog extends React.Component {
     }
 
     componentDidMount() {
-        this.loadPosts();
+        // only call once loadPosts() has been implemented
+        // this.loadPosts();
     }
 
     toggleForm() {

@@ -16,10 +16,17 @@ const throwError = async (resp) => {
 };
 
 // TODO: Write a function that gets all of the posts from the database using a fetch
+const getPosts = async() => {
 
+}
 // TODO: Write a function that adds a new post to the database using a fetch
-
+const addPost = async (post) => {
+    
+}
 // TODO: Write a function that deletes a post from the database using a fetch
+const deletePost = async (postId) => {
+    
+}
 
 export {
     //getPosts,
