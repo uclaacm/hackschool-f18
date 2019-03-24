@@ -7,7 +7,7 @@
 ## Resources
 
 **Slides**
-* [Session 5 Frontend: React](TODO)
+* [Session 5 Frontend: React](https://docs.google.com/presentation/d/1tFhMnSbLLT7pRyxRdt_wO4ctZy7MUASlWGi_CZRB1Zw/edit#slide=id.g44a953c3a9_0_0)
 
 **ACM Membership Attendance Portal**
 * [Portal](https://members.uclaacm.com/login)
