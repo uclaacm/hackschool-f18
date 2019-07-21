@@ -41,14 +41,18 @@ Get [VS Code](https://code.visualstudio.com/).
 
 Get [Atom](https://atom.io/).
 
-## Basic Web Structure
-### Frontend
-"Frontend" is "what is being shown in the browser". It usually refers to the **user interface** (UI). **Client-side** code are written by "frontend developer". The fundamental languages of the frontend are **HTML**, **CSS** and **JavaScript**.
+## What happens when you type a URL and hit enter?
+Let's say Tim made this fantastic webpage that he wants to share with the world. \
 
-### Backend 
-"Backend" is "what is should be sent to the browser".
-It is where all the logic of the site sits. **Server-side** code are written by "backend develper"
+So he puts the code for his webpage on a computer that's always running. This computer can **serve** your page whenever a **client** computer requests it. An example of a client in this situation could be your personal laptop, and an example of a server in this situation could be an AWS server in Arizona. \
 
+How does your laptop know which server to ask for the webpage from? All computers have an address called an IP address. Think of it as a mailing address for computer. Each **domain name** (for example, helloworld.com) corresponds to an IP address to a server. So when you type in a [domain name](https://dyn.com/blog/dns-why-its-important-how-it-works/) from your computer, you are making a request to a server with that corresponding address. \
+
+After all of this, you can view the web page on your computer through a browser like Google Chrome. \
+
+In fact we can see this in action using Google Chrome!
+
+For more, see this [article](https://medium.com/@maneesha.wijesinghe1/what-happens-when-you-type-an-url-in-the-browser-and-press-enter-bb0aa2449c1a ).
 
 ## HTML (Hyper Text Markup Language)
 
