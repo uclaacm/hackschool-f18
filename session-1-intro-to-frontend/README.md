@@ -128,6 +128,8 @@ Add the following code:
 
 - The above code are exactly the same
 - New lines and spaces does not matter
+  
+Explore the following HTML tags on your own!
 
 ### **Tag**: Image
 ```HTML
@@ -199,10 +201,11 @@ All HTML tags have the attribute `class` and `id`. These 2 attributes can be use
 ```
 Then in `style.css`, add the following:
 ```CSS
-.header {
+.noot {
   color: green;
 }
-```
+```  
+![Class](images/class.png)
 
 Now let's say that we want the very last header to be special and have its own style. We can identify a single element with the `id` attribute. In `index.html`:
 ```HTML
@@ -217,6 +220,42 @@ Then in `style.css`, add the following:
 	color: purple;
 }
 ```
+The difference between a class and an id is that an id should identify just a single element.  
+![Id](images/id.png)
+  
+Next up is a cool animation thing and more fonts because the default ones are boring. (And here at Hackschool, we like to keep things fun and fresh!)
+  
+First, let's define an animation named `fire` in `style.css`:
+```CSS
+@keyframes fire {
+	0% {color: red; transform: translate(100px, 0px);}
+	50% {color: yellow; transform: translate(0px, 0px);}
+	100% {color: red; transform: translate(100px, 0px);}
+}
+```
+This says that at 0% animation completion, the style will be red and translated to the right by 100px. Then at 50% animation completion, the style will be yellow and translated 0px. Lastly at 100% animation completion, the style will be red and translated to the right by 100px again. The animation between the keyframes is automatic. 
+  
+Now that the animation has been defined, you can use the property `animation`! Let's add the `fire` animation in `style.css` to the element with the id `last`:
+```CSS
+#last {
+	color: green;
+	animation: fire 4s ease infinite;
+}
+```
+This means that we give this element an animation that lasts 4 seconds (0% is at 0 seconds, 50% is at 2 seconds, 100% is at 4 seconds), has a speed function of `ease` (read more [here](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function)), and repeats infinitely.
+  
+![Animation](images/animation.png)
+
+Next we're going to unlock a world of possibilities in fonts with how to use Google fonts! First, search up [Google Fonts](https://fonts.google.com/). Pick a font! Any font!
+  
+Click the "+" button for the font you have chosen. Then click the black bar in the bottom left and follow the instructions. You will need to add the first snippet to `index.html` and the second snippet in `style.css`.
+  
+![Google Fonts 1](images/googlefonts1.png)
+![Google Fonts 2](images/googlefonts2.png)
+  
+![Fonts](images/fonts.png)
+  
+Try the following on your own!
 
 Notice that in CSS, ids begin with a `#` and classes begin with a `.`. Also notice that the style for the id overrides the style for the class. This is part of the "cascading" nature of "cascading style sheets". 
 
