@@ -1,27 +1,16 @@
-#my-paragraph {
-    color: red;
+@keyframes fire {
+	0% {color: red; transform: translate(100px, 0px);}
+	50% {color: yellow; transform: translate(0px, 0px);}
+	100% {color: red; transform: translate(100px, 0px);}
 }
 
-/* .header {
-color: blue;
-} */
-
-.header {
-  color: blue;
-  text-align: right;
-  font-weight: lighter;
+.noot {
+	color: green;
+	font-family: 'Beth Ellen', cursive;
 }
 
-img {
-  width: 200px;
+#last {
+	color: green;
+	animation: fire 4s ease infinite;
 }
 
-* {
-  border: 1px solid aquamarine;
-}
-
-button {
-  /* padding: 10px; */
-  /* changed from padding to margin */
-  margin: 10px;
-}
