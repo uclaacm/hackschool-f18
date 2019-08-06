@@ -17,7 +17,6 @@
 **Questions**
 * [Ask your question here!](http://goo.gl/forms/xyeFXLx9mrAXolCG3)
 
-
 # What we'll be learning today
 
 * Basic Dev Environment Setup
@@ -52,17 +51,17 @@ So he puts the code for his webpage on a computer that's always running. This co
 
 How does your laptop know which server to ask for the webpage from? All computers have an address called an IP address. Think of it as a mailing address for computer. Each **domain name** (for example, helloworld.com) corresponds to an IP address to a server. So when you type in a [domain name](https://dyn.com/blog/dns-why-its-important-how-it-works/) from your computer, you are making a request to a server with that corresponding address.
 
-![Client](images/hiidlike.png)
-![Server](images/yanoprobs.png)
+<img src="images/hiidlike.png" height="300">
+<img src="images/yanoprobs.png" height="300">
 *These not actually the words computers use to communicate. The words that computers actually use to communicate is called a "protocol," and the protocol that web browsers and servers use to communicate is called HTTP or [HyperText Transfer Protocol](https://www.lifewire.com/hypertext-transfer-protocol-817944)*  
   
 After all of this, you can view the web page on your computer through a browser like Google Chrome.  
 
-In fact we can see this in action using Google Chrome! If you right click on a webpage and select "Inspect," you open Chrome developer tools. 
-![Inspect](images/inspect.png)  
-Then navigate to the "Network" tab and hit refresh. All the files that you see have been delivered by the server through the network to the client. Notice in particular the different file types. We'll be learning more about the code in the documents, stylesheets, and scripts that you see here.
-![Network](images/network.png)
-![Network files](images/networkfiles.png)
+In fact we can see this in action using Google Chrome! If you right click on a webpage and select "Inspect," you open Chrome developer tools.    
+<img src="images/inspect.png" height="300">    
+Then navigate to the "Network" tab and hit refresh. All the files that you see have been delivered by the server through the network to the client. Notice in particular the different file types. We'll be learning more about the code in the documents, stylesheets, and scripts that you see here.    
+<img src="images/network.png" height="300">
+  
 
 For more about what happens when you type a URL in the browser, check out this [article](https://medium.com/@maneesha.wijesinghe1/what-happens-when-you-type-an-url-in-the-browser-and-press-enter-bb0aa2449c1a ).
 
@@ -205,7 +204,7 @@ Then in `style.css`, add the following:
   color: green;
 }
 ```  
-![Class](images/class.png)
+<img src="images/class.png" height="300">
 
 Now let's say that we want the very last header to be special and have its own style. We can identify a single element with the `id` attribute. In `index.html`:
 ```HTML
@@ -222,7 +221,7 @@ Then in `style.css`, add the following:
 ```
 Notice that in CSS, ids begin with a `#` and classes begin with a `.`. Also notice that the style for the id overrides the style for the class. This is part of the "cascading" nature of "cascading style sheets". The difference between a class and an id is that an id should identify just a single element.  
 
-![Id](images/id.png)
+<img src="images/id.png" height="300">
   
 Next up is a cool animation thing and more fonts because the default ones are boring. (And here at Hackschool, we like to keep things fun and fresh!)
   
@@ -245,16 +244,16 @@ Now that the animation has been defined, you can use the property `animation`! L
 ```
 This means that we give this element an animation that lasts 4 seconds (0% is at 0 seconds, 50% is at 2 seconds, 100% is at 4 seconds), has a speed function of `ease` (read more [here](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function)), and repeats infinitely.
   
-![Animation](images/animation.png)
+<img src="images/animation.png" height="300">
 
 Next we're going to unlock a world of possibilities in fonts with how to use Google fonts! First, search up [Google Fonts](https://fonts.google.com/). Pick a font! Any font!
   
 Click the "+" button for the font you have chosen. Then click the black bar in the bottom left and follow the instructions. You will need to add the first snippet to `index.html` and the second snippet in `style.css`.
   
-![Google Fonts 1](images/googlefonts1.png)
-![Google Fonts 2](images/googlefonts2.png)
+<img src="images/googlefonts1.png" height="300">
+<img src="images/googlefonts2.png" height="300">
   
-![Fonts](images/fonts.png)
+<img src="images/fonts.png" height="300">
   
 Try the following on your own!
 
@@ -313,8 +312,6 @@ The DOM is a representation of the page as an object.
 - Left click on any page. Click `Inspect`.
 - You should see something like this:
 
-<img src="demo/DOM.png" width="500px" style="margin-left: 41px"/>
-
 Huh? This looks just like HTML. HTML also represents what the page should look like, but it is the source and not the actual DOM. Once you display your page in the browser, you can’t change the HTML source code anymore but you can change the DOM. Let's change some text on the screen using Chrome's Inspect Element. First click the box with a cursor in the upper left corner or use the shortcut Cmd+Shift+C. Then click the element on the page that you want to change. Lastly double click the highlighted and type something out. Your DOM manipulation should show up on the page.
 
 ![DOM Manipulation](images/dommanipulation.png)
@@ -359,7 +356,7 @@ document.getElementById('last').onclick = () => {
 
 As a review, let's take a look again at the network tab of Chrome developer tools.
 
-![Network Again](networkagain.png)
+<img src="images/networkagain.png" height="300">
 
 If you look at some of the file types, you'll notice documents, stylesheets, and scripts--all of which we just learned about!
 
