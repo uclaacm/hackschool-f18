@@ -220,7 +220,8 @@ Then in `style.css`, add the following:
 	color: purple;
 }
 ```
-The difference between a class and an id is that an id should identify just a single element.  
+Notice that in CSS, ids begin with a `#` and classes begin with a `.`. Also notice that the style for the id overrides the style for the class. This is part of the "cascading" nature of "cascading style sheets". The difference between a class and an id is that an id should identify just a single element.  
+
 ![Id](images/id.png)
   
 Next up is a cool animation thing and more fonts because the default ones are boring. (And here at Hackschool, we like to keep things fun and fresh!)
@@ -256,8 +257,6 @@ Click the "+" button for the font you have chosen. Then click the black bar in t
 ![Fonts](images/fonts.png)
   
 Try the following on your own!
-
-Notice that in CSS, ids begin with a `#` and classes begin with a `.`. Also notice that the style for the id overrides the style for the class. This is part of the "cascading" nature of "cascading style sheets". 
 
 ```CSS
 * {
@@ -304,34 +303,48 @@ button {
 
 ## JS (JavaScript)
 
+Finally, the last building block of the web! If we want to make our website more interactive, we need to be able to programmatically change the web page and set rules about what happens during certain events. For example, if we wanted to change some text after a button was clicked, we would use JavaScript. Changing something about the page based on a particular event or condition is sometimes referred to as "Manipulating the DOM."
+
 ### What is DOM (Document Object Model)? 
 
-- Let's check it out in the broswer
+The DOM is a representation of the page as an object. 
+
+- Let's check it out in the browser!
 - Left click on any page. Click `Inspect`.
-- You should see something like this.
+- You should see something like this:
 
-<img src="DOM.png" width="500px" style="margin-left: 41px"/>
+<img src="demo/DOM.png" width="500px" style="margin-left: 41px"/>
 
-- This is the "HTML representation" of the DOM. 
-- We can manipulate the DOM through JavaScript
+Huh? This looks just like HTML. HTML also represents what the page should look like, but it is the source and not the actual DOM. Once you display your page in the browser, you can’t change the HTML source code anymore but you can change the DOM. Let's change some text on the screen using Chrome's Inspect Element. First click the box with a cursor in the upper left corner or use the shortcut Cmd+Shift+C. Then click the element on the page that you want to change. Lastly double click the highlighted and type something out. Your DOM manipulation should show up on the page.
 
-### **Manipulate**: Create a JavaScript file and link it to your HTML
-- Create a file named `script.js`. Under the same directory as your HTML file.
+![DOM Manipulation](images/dommanipulation.png)
+
+If we refresh, the changes will disappear. This is because we changed the DOM but not the HTML source code. Once we refresh, we reload a fresh copy of the source.
+
+Read more about the DOM [here](https://www.digitalocean.com/community/tutorials/introduction-to-the-dom).
+
+### What is JavaScript?
+So that’s cool and all, good for showing your parents your grades and making official websites look silly. But for our website, we can’t just open Chrome developer tools when we want to change the DOM. Instead, we use a language called JavaScript for changing text, changing colors, changing images, anything in the object that represents the page (anything in the DOM).  
+  
+In the console of Chrome developer tools, we can run JavaScript! The console allows you to print the value of variables. `document` is a variable that represents the DOM. The function `getElementById` allows you to get a particular element from the DOM based on its id. The attribute `onclick` of an element can be set to a function that determines what happens when the element is clicked. The attribute `innerHTML` refers to the text between the tags of an element. In this case, we're setting the `onclick` attribute to a function that sets the element with id 'acm-title' to have the text of 'Secret message.'
+
+![JavaScript](images/javascript.png)
+
+These may be new and confusing concepts that we will cover much more throughout Hackschool, but the key takeaway here is to see what JavaScript looks like and how it can be used to programmatically change a webpage. Read more about JavaScript [here](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
+
+### **Manipulate**: Let's Write Some JavaScript!
+- Create a file named `script.js` in the same directory as your HTML file. Then add your script to `index.html`:
 ```HTML
-<!-- Inside the body tag -->
-<script src="script.js"></script>
+<!-- Inside the body tag just before the closing-->
+	<script src="script.js"></script>
+</body>
 ```
-- You can also put all the JavaScript code within the `script` tag. 
+- You can also put all the JavaScript code within the `script` tag and not specify the source. 
 
 
 ### **Manipulate**: Click and Open Sesame
 
-In your `index.html` file, 
-```HTML
-<li id="last">Second ordered list item</li>
-```
-
-In your `script.js` file,
+In `script.js`:
 ```javascript
 document.getElementById('last').onclick = () => {
 	document.getElementById('last').innerHTML = 'Secret message';
@@ -341,3 +354,30 @@ document.getElementById('last').onclick = () => {
 - `document` is another global variable that represents the DOM.
 - The first line is saying "after the `window` has loaded (`onload`), execute the following function".
 - The second and third line means "for the element with id `last` from the DOM (`document`), and when it is clicked (`onclick`), we change its `innerHTML` content to 'Secret message'.
+
+### And that's it!
+
+As a review, let's take a look again at the network tab of Chrome developer tools.
+
+![Network Again](networkagain.png)
+
+If you look at some of the file types, you'll notice documents, stylesheets, and scripts--all of which we just learned about!
+
+### What's next for Hackschool?
+Next week will be an introduction to back-end web development! Afterwards, we'll branch off into front-end and back-end workshops. What's coming up for front-end?
+* JavaScript and the DOM
+  * If you were confused on the last part of this workshop, we’ll review it in the next front-end workshop and go over more concrete examples.
+* CSS Layout
+  * Maybe you had trouble centering things or moving elements to a particular position, we’ll go over how CSS is used for layout with flexbox and grid
+* React
+  * All of the HTML, CSS, and JavaScript we’ve been learning is fundamental to front-end web development, but it is impractical to make complex web applications just by having three files and manually writing all of the HTML, CSS, and JavaScript. Frameworks are used to scale and manage web applications and reduce repetitive work. At the end of Hackschool, we’ll introduce the popular framework React. 
+* Dynamic Content with React
+  * Right now, we’ve only been making static websites where the text is fixed. We’ll show you how to make content dynamic. For example, maybe you want to display the current weather which will change every time a user comes to your site.
+
+### Challenge
+Create the front page of your alter ego as a dinosaur. (Other front pages also acceptable.)
+This is an [example](https://kristielim.github.io/kristriceratops/) and its [source code](https://github.com/kristielim/kristriceratops).
+
+The goal of the challenge is to play around and get a feel for HTML, CSS, and JavaScript. We didn’t cover anything in depth, so you’ll probably come across a lot of “Why is this happening??” moments. Those would be good times to ask mentors/submit questions so we can address it in the future. 
+
+The world of web development is really big, and the goal of this workshop was to understand what front-end web development, HTML, CSS, and JavaScript are. It takes a lot longer than just one workshop to learn web development, but we hope to give you a good foundation so you can develop your skills in the future--both throughout this quarter and beyond :)
