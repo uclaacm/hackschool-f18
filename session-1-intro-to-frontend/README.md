@@ -1,4 +1,4 @@
-# HackSchool Session 1: Introduction to Web Development
+# Hackschool Session 1: Introduction to Web Development
 **Location**: Covel 227
 **Time**: 6-8pm
 
@@ -18,13 +18,11 @@
 * [Ask your question here!](http://goo.gl/forms/xyeFXLx9mrAXolCG3)
 
 # What we'll be learning today
-
-* Basic Dev Environment Setup
-* Basic Web Structure
-  * Frontend
-  * Backend
-* HTML
-* CSS
+- [Basic Dev Environment Setup](#basic-dev-environment-setup)
+- [What is web development?](#what-happens-when-you-type-a-url-and-hit-enter)
+- [HTML](#html)
+- [CSS](#css)
+- [JavaScript](#javascript)
 
 ## Basic Dev Environment Setup
 ### 1. Browser with a debugger
@@ -53,7 +51,8 @@ How does your laptop know which server to ask for the webpage from? All computer
 
 <img src="images/hiidlike.png" height="300">
 <img src="images/yanoprobs.png" height="300">
-*These not actually the words computers use to communicate. The words that computers actually use to communicate is called a "protocol," and the protocol that web browsers and servers use to communicate is called HTTP or [HyperText Transfer Protocol](https://www.lifewire.com/hypertext-transfer-protocol-817944)*  
+
+> These not actually the words computers use to communicate. The words that computers actually use to communicate is called a "protocol," and the protocol that web browsers and servers use to communicate is called HTTP or [HyperText Transfer Protocol](https://www.lifewire.com/hypertext-transfer-protocol-817944).
   
 After all of this, you can view the web page on your computer through a browser like Google Chrome.  
 
@@ -75,8 +74,8 @@ Developers also write code that describe what should be sent to the browser (amo
   
 This first session is focused on the basics of front-end. The foundations of front-end development are: HTML, CSS, and JavaScript. 
 
-## HTML (Hyper Text Markup Language)
-HTML is just text with some extra tags that describe the **structure** and the **content** of the page. Let's write some HTML!
+## HTML
+HTML (Hyper Text Markup Language) is just text with some extra tags that describe the **structure** and the **content** of the page. Let's write some HTML!
 
 ### HTML Setup
 1. Make a new folder.
@@ -104,9 +103,9 @@ Add the following code:
 
 ### **Tag**: Header
 ```HTML
-<h1> HELLO WORLD </h1>
+<h1> Hello World </h1>
 ```
-><h1> HELLO WORLD </h1>
+><h1> Hello World </h1>
 - A **header** tag can be from `h1`-`h6`, with 1 being the most important/largest, to 6 being the least important/smallest
 - Use header tags to express section headers and other important information
 
@@ -115,29 +114,34 @@ Add the following code:
 ```HTML
 <!-- Example 1 -->
 <h2>
-  HELLO WORLD
+  Hello World
 </h2>
 
 <!-- Example 2 -->
-<h2> HELLO WORLD </h2>
+<h2> Hello World </h2>
 
 <!-- Example 3 -->
-<h2> HELLO      WORLD </h2>
+<h2> Hello      World </h2>
 ```
 
 - The above code are exactly the same
 - New lines and spaces does not matter
-  
-Explore the following HTML tags on your own!
 
 ### **Tag**: Image
 ```HTML
-<img src="https://i.ytimg.com/vi/ZHgtIyZX_q8/maxresdefault.jpg">
+<img src="https://i.ytimg.com/vi/ZHgtIyZX_q8/maxresdefault.jpg" height="300px">
 ```
 > <img src="https://i.ytimg.com/vi/ZHgtIyZX_q8/maxresdefault.jpg" width=200>
 
-- Use `img` tag to insert image
-- the `src` attribute specify a URL to the image, which can be local or online
+- Use the `img` tag to insert image.
+- Notice that there is no closing tag. Not all tags need have one!
+- Tags can have attributes. The `src` attribute of an image specifies a URL to the image, which can be local or online. The `height` attribute specifies the image height. If you don't specify the width, the image will automatically scale.
+- If you want to add an image locally, move your image to the same folder as `index.html` and put the image name as the value for the `src` attribute. For example, if I put an image called `penguin.png` in the same folder, my tag would look like `<img src="penguin.png">`.
+- If you want to add an image that is online, right click on an image you find online and select "Copy Image Address". Then paste that address as the value for the `src` attribute.
+  
+<img src="images/copyimageaddress.png" width=500>
+
+  Explore the following HTML tags on your own!
 
 ### **Tag**: Paragraph
 ```HTML
@@ -178,17 +182,45 @@ Explore the following HTML tags on your own!
 - The `types` attribute specifies the type of input. It can be “text”, “number”, or “submit” based on what you want the user to input.
 
 
-## CSS (Cascading Style Sheet)
+## CSS
 
-HTML should only represent the content. A different language called CSS is used to create rules about *style*. With CSS, you can create rules like "This text should be red." or "There should be 20 pixels between these two elements." or "This navigation bar should stick to the top of the screen."
+HTML should only represent the content. A different language called CSS (Cascading Style Sheet) is used to create rules about *style*. With CSS, you can create rules like "This text should be red." or "There should be 20 pixels between these two elements." or "This navigation bar should stick to the top of the screen." Let's take a look at the syntax:
+```css
+body: {
+  color: red;
+}
+```
+`body` is the **selector** is what tag you're referring to in the HTML. 
+`color` is the **property** that you're setting.
+`red` is the **value** that you're setting the property to.
 
 ### **Stylish**: Create and Link your CSS file to HTML
-- Create a file named `style.css` and save it to the same folder as your HTML file. Then add the following line to your HTML file in order to link the two:  
+Create a file named `style.css` and save it to the same folder as your HTML file. 
+
+Then add the following line to your HTML file in order to link the two:  
 ```HTML
 <!-- Inside the head tag -->
 <link rel="stylesheet" type="text/css" href="style.css">
 ```
 - You can also directly put all CSS code in a `<style>` tag. But separating them into two files is cleaner.
+
+Let's write some more CSS! What are some ways to add styles to text? Add to `style.css`:
+```css
+h1 {
+  font-size: 36px;
+  font-family: 'Comic Sans MS';
+}
+```
+There are many many CSS properties and if you're not sure what property name to use, search it up! For example, if I didn't know how to do rounded corners on an image, I could search up "rounded corners css." I would find some documentation on the property [border-radius](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius) and cool examples. Let's include the last one!
+
+```css
+img {
+  border-radius: 50% 20% / 10% 40%;
+}
+```
+
+<img src="images/borderradius.png" height="400">
+
 
 ### **About Selection**: Class and ID
 All HTML tags have the attribute `class` and `id`. These 2 attributes can be used by CSS code to target the element to add style to. For example, let's say we only want to change the styles on the last three headings. We can specify a class named `noot` for these three headings like this in `index.html`:
@@ -238,7 +270,7 @@ This says that at 0% animation completion, the style will be red and translated 
 Now that the animation has been defined, you can use the property `animation`! Let's add the `fire` animation in `style.css` to the element with the id `last`:
 ```CSS
 #last {
-	color: green;
+	color: purple;
 	animation: fire 4s ease infinite;
 }
 ```
@@ -300,7 +332,7 @@ button {
 - Can you see the difference between `padding` and `margin`? `padding` adds space "inside" while `margin` adds "outside".
 
 
-## JS (JavaScript)
+## JavaScript
 
 Finally, the last building block of the web! If we want to make our website more interactive, we need to be able to programmatically change the web page and set rules about what happens during certain events. For example, if we wanted to change some text after a button was clicked, we would use JavaScript. Changing something about the page based on a particular event or condition is sometimes referred to as "Manipulating the DOM."
 
@@ -352,7 +384,7 @@ document.getElementById('last').onclick = () => {
 - The first line is saying "after the `window` has loaded (`onload`), execute the following function".
 - The second and third line means "for the element with id `last` from the DOM (`document`), and when it is clicked (`onclick`), we change its `innerHTML` content to 'Secret message'.
 
-### And that's it!
+## And that's it!
 
 As a review, let's take a look again at the network tab of Chrome developer tools.
 
@@ -371,7 +403,7 @@ Next week will be an introduction to back-end web development! Afterwards, we'll
 * Dynamic Content with React
   * Right now, we’ve only been making static websites where the text is fixed. We’ll show you how to make content dynamic. For example, maybe you want to display the current weather which will change every time a user comes to your site.
 
-### Challenge
+# Challenge
 Create the front page of your alter ego as a dinosaur. (Other front pages also acceptable.)
 This is an [example](https://kristielim.github.io/kristriceratops/) and its [source code](https://github.com/kristielim/kristriceratops).
 

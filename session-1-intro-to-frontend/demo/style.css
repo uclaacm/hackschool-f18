@@ -1,16 +1,29 @@
+body {
+	color: red;
+}
+
+h1 {
+  font-size: 36px;
+  font-family: 'Comic Sans MS';
+}
+
+img {
+	border-radius: 50% 20% / 10% 40%;
+}
+
+.noot {
+  color: green;
+  font-family: 'Beth Ellen', cursive;
+}
+
+#last {
+	color: purple;
+	animation: fire 4s ease infinite;
+}
+
 @keyframes fire {
 	0% {color: red; transform: translate(100px, 0px);}
 	50% {color: yellow; transform: translate(0px, 0px);}
 	100% {color: red; transform: translate(100px, 0px);}
-}
-
-.noot {
-	color: green;
-	font-family: 'Beth Ellen', cursive;
-}
-
-#last {
-	color: green;
-	animation: fire 4s ease infinite;
 }
 
